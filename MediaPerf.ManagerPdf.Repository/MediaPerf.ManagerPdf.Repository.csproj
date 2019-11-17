@@ -71,6 +71,7 @@
     <Compile Include="Implementations\PDFWriterEvents.cs" />
     <Compile Include="Implementations\XmlParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryBase\DapperRepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">

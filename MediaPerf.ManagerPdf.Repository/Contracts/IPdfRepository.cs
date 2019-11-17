@@ -11,6 +11,7 @@ namespace MediaPerf.ManagerPdf.Repository.Contracts
            IFooterPage footerPage,
            XDocument royaltyFeeDataSet);
 
-        Task<bool> ReadTextFileAsync();
+        //Task<bool> ManagefpPPV();
+        bool ManagefpPPV();
     }
 }

@@ -100,6 +100,7 @@ namespace MediaPerf.ManagerPdf.Security
         {
             return IsDomaineDirectoryAutorised(aDomaine) && IsLoginActiveDirectoryAutorised(aLogin);
         }
+
         /// <summary>
         /// retourne true si le domaine correspond
         /// </summary>
@@ -112,6 +113,7 @@ namespace MediaPerf.ManagerPdf.Security
             { _Return = true; }
             return _Return;
         }
+
         /// <summary>
         /// Retourne l'annuaire ActiveDirectory courant
         /// </summary>
@@ -120,9 +122,14 @@ namespace MediaPerf.ManagerPdf.Security
         private static DirectoryEntry GetAnnuaireAD()
         {
             DirectoryEntry AnnuaireAD = null;
-            AnnuaireAD = new DirectoryEntry(ResourceActiveDirectory.TypeAnnuaireActiveDirectory + ResourceActiveDirectory.DomaineActiveDirectory, ResourceActiveDirectory.LoginUtilisateurBaseDeDonnees, ResourceActiveDirectory.PswUtilisateurBaseDeDonnees);
+            AnnuaireAD = new DirectoryEntry(ResourceActiveDirectory.TypeAnnuaireActiveDirectory +
+                ResourceActiveDirectory.DomaineActiveDirectory, 
+                ResourceActiveDirectory.LoginUtilisateurBaseDeDonnees,
+                ResourceActiveDirectory.PswUtilisateurBaseDeDonnees);
+
             return AnnuaireAD;
         }
+
         /// <summary>
         /// Retourne true si l'utilisateur à un profil dans Active Directory. Attention la connexion necessite l'existance du compte standard de connexion à la 
         /// base de données "SQLUser/SQLUser" défini dans le fichier de ressources.
@@ -135,12 +142,14 @@ namespace MediaPerf.ManagerPdf.Security
                 if (_DirectoryEntry != null)
                 { return true; }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(exception.ToString());
             }
+
             return false;
         }
+
         /// <summary>
         /// retourne l'adresse mail correspondant au login passé en paramètre
         /// </summary>
@@ -157,7 +166,8 @@ namespace MediaPerf.ManagerPdf.Security
                 {
                     if (_DirectoryEntry.Properties[ParametreActiveDirectory_Mail].Value != null)
                     {
-                        _MailAddress = new System.Net.Mail.MailAddress(_DirectoryEntry.Properties[ParametreActiveDirectory_Mail].Value.ToString());
+                        _MailAddress = new System.Net.Mail.MailAddress(
+                            _DirectoryEntry.Properties[ParametreActiveDirectory_Mail].Value.ToString());
                     }
                     else
                     {
@@ -165,12 +175,14 @@ namespace MediaPerf.ManagerPdf.Security
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                //ClsException.AfficheException(ex);
+                Console.WriteLine(exception.ToString());
             }
+
             return _MailAddress;
         }
+
         //Rajout OJU - Edition DBC - 02.03.2009
         public static string GetPhone(string aLogin)
         {
@@ -185,7 +197,7 @@ namespace MediaPerf.ManagerPdf.Security
             }
             catch (Exception ex)
             {
-                //ClsException.AfficheException(ex);
+                //ClsException.AfficheException(exception);
             }
             return _Phone;
         }
@@ -203,7 +215,7 @@ namespace MediaPerf.ManagerPdf.Security
             }
             catch (Exception ex)
             {
-                //ClsException.AfficheException(ex);
+                //ClsException.AfficheException(exception);
             }
             return _Fax;
         }
@@ -218,8 +230,6 @@ namespace MediaPerf.ManagerPdf.Security
             string _Fax = "";
             try
             {
-
-
                 if (GetUserActiveDirectoryProfil(aLogin) != null)
                 {
                     DirectoryEntry _DirectoryEntry = GetUserActiveDirectoryProfil(aLogin);
@@ -255,7 +265,7 @@ namespace MediaPerf.ManagerPdf.Security
             }
             catch (Exception ex)
             {
-                //ClsException.AfficheException(ex);
+                //ClsException.AfficheException(exception);
             }
             return _List;
         }
@@ -272,36 +282,53 @@ namespace MediaPerf.ManagerPdf.Security
             }
             catch (Exception ex)
             {
-                //ClsException.AfficheException(ex);
+                //ClsException.AfficheException(exception);
             }
             return _DisplayName;
         }
 
-        public static void GetDisplayNamePhoneMail(string aLogin, ref string displayName, ref string phone, ref System.Net.Mail.MailAddress mail)
+        public static void GetDisplayNamePhoneMail(string aLogin, 
+            ref string displayName, 
+            ref string phone, 
+            ref System.Net.Mail.MailAddress mail)
         {
             displayName = phone = null;
             mail = null;
             try
             {
                 DirectoryEntry _DirectoryEntry = GetUserActiveDirectoryProfil(aLogin);
-                if ((_DirectoryEntry != null) && (_DirectoryEntry.Properties[ParametreActiveDirectory_DisplayName].Value != null))
+                if ((_DirectoryEntry != null) && (_DirectoryEntry.
+                    Properties[ParametreActiveDirectory_DisplayName].
+                    Value != null))
                 {
-                    displayName = _DirectoryEntry.Properties[ParametreActiveDirectory_DisplayName].Value.ToString();
+                    displayName = _DirectoryEntry.
+                        Properties[ParametreActiveDirectory_DisplayName].
+                        Value.ToString();
                 }
-                if ((_DirectoryEntry != null) && (_DirectoryEntry.Properties[ParametreActiveDirectory_Phone].Value != null))
+                if ((_DirectoryEntry != null) && (_DirectoryEntry.
+                    Properties[ParametreActiveDirectory_Phone].
+                    Value != null))
                 {
-                    phone = _DirectoryEntry.Properties[ParametreActiveDirectory_Phone].Value.ToString();
+                    phone = _DirectoryEntry.
+                        Properties[ParametreActiveDirectory_Phone].
+                        Value.ToString();
                 }
-                if ((_DirectoryEntry != null) && (_DirectoryEntry.Properties[ParametreActiveDirectory_Mail].Value != null))
+                if ((_DirectoryEntry != null) && (_DirectoryEntry.
+                    Properties[ParametreActiveDirectory_Mail].
+                    Value != null))
                 {
-                    mail = new System.Net.Mail.MailAddress(_DirectoryEntry.Properties[ParametreActiveDirectory_Mail].Value.ToString());
+                    mail = new System.Net.Mail.MailAddress(_DirectoryEntry.
+                        Properties[ParametreActiveDirectory_Mail].
+                        Value.ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                //ClsException.AfficheException(ex);
+                Console.WriteLine(exception.ToString());
             }
         }
+
+
         private static DirectoryEntry GetUserActiveDirectoryProfil(string aLogin)
         {
             try
@@ -323,10 +350,11 @@ namespace MediaPerf.ManagerPdf.Security
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                //ClsException.AfficheException(ex);
+                Console.WriteLine(exception.ToString());
             }
+
             return null;
         }
         #endregion

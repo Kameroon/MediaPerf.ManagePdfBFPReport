@@ -11,7 +11,8 @@ namespace MediaPerf.ManagerPdf.Repository.Helpers
 {
     public class DapperHelper
     {
-        public static bool ExecuteProc(SqlConnection sqlConnection, string sql, List<SqlParameter> paramList = null)
+        public static bool ExecuteProc(SqlConnection sqlConnection, 
+            string sql, List<SqlParameter> paramList = null)
         {
             try
             {

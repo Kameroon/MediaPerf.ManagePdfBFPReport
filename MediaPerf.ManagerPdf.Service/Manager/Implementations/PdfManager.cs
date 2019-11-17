@@ -48,9 +48,10 @@ namespace MediaPerf.ManagerPdf.Service.Manager.Implementations
         /// --  --
         /// </summary>
         /// <returns></returns>
-        public Task<bool> ReadTextFileAsync()
+        //public Task<bool> ReadTextFileAsync()
+        public bool ReadTextFileAsync()
         {
-            return _pdfRepository.ReadTextFileAsync();            
+            return _pdfRepository.ManagefpPPV();            
         }
         #endregion
     }

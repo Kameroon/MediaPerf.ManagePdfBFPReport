@@ -96,7 +96,7 @@ namespace MediaPerf.ManagerPdf.Repository.Helpers.Implementations
         }
         
         /// <summary>
-        /// -- Consolidate Pdf header page and send it to repository --
+        /// -- Consolidate Pdf header page and send it to _repository --
         /// </summary>
         /// <param name="headerDataTable"></param>
         /// <param name="adressTemple"></param>
@@ -173,7 +173,7 @@ namespace MediaPerf.ManagerPdf.Repository.Helpers.Implementations
         }
 
         /// <summary>
-        /// -- Consolidate Pdf footer page and send it to repository --
+        /// -- Consolidate Pdf footer page and send it to _repository --
         /// </summary>
         /// <param name="footerDataTable"></param>
         /// <param name="_footerPage"></param>

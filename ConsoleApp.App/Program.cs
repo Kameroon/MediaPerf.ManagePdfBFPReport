@@ -53,7 +53,7 @@ namespace ConsoleApp.App
         /// <summary>
         /// --   --
         /// </summary>
-        private static async void ManageBFPReportRoyaltiesAsync()
+        private static void ManageBFPReportRoyaltiesAsync()
         {
             string pdfPath = @"C:\Users\Sweet Family\Desktop\PdfFilesPath";
             pdfPath = @"C:\Users\mMABOU\Desktop\PDFFiles";
@@ -67,7 +67,7 @@ namespace ConsoleApp.App
             stopwatch.Start();
 
             _logger.Debug($"==> Début lecture de la liste des redevance à gérer.");
-            bool result = await _pdfManager.ReadTextFileAsync();
+            bool result = _pdfManager.ReadTextFileAsync();
             _logger.Debug($"==> Fin lecture de la liste des redevance à gérer.");
 
             stopwatch.Stop();

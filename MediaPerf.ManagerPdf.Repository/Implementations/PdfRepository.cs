@@ -42,9 +42,10 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private IConnectionStringHelper _connectionStringHelper;
         private DataSet _adressTemple = null;
+        private DataSet _royaltyFeeDataSet = null;
         private DataSet _headerDataSetTemple = null;
         private DataSet _footerDataSetTemple = null;
-        private DataSet _royaltyFeeDataSet = null;
+        private DataSet _bfpReportHistoricDataSet = null;
         //private DataSet _royaltyFeeDataSetTemplate = null;
         private static object _lockObj = new object();
 
@@ -120,9 +121,8 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
         {
             _logger.Debug($"==> Début création du fichier Pdf");
 
-            #region -- Fields --
+            #region -- Declare and Init --
             bool result = false;
-
             double total = 0;
             double ssTotal = 0;
             int countDetail = 0;
@@ -135,9 +135,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
             string enseigne = null;
             string productName = null;
             IEnumerable<XElement> _detailXElements = null; 
-            #endregion
-
-            #region --   --
+           
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
@@ -153,12 +151,12 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                                    
             _logger.Debug($"==> Génération du chemin du fichier");
             _fullPdfFilePath = string.Concat(PDF_REPOSITORY_PATH, customPdfFileName, extension);
+            #endregion
 
             if (File.Exists(_fullPdfFilePath))
             {
                 File.Delete(_fullPdfFilePath);
             }
-            #endregion
 
             try
             {
@@ -215,7 +213,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         //firstLineSeparator.SpacingBefore = 120f;
                         //masterDocument.Add(firstLineSeparator);
 
-                        #region -- Generate XML Grid --
+                        #region -- Manage XML --
                         PdfPTable royaltiesTables = new PdfPTable(4);
 
                         royaltiesTables.WidthPercentage = 96;
@@ -484,8 +482,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         masterStream.Close();
                         masterWriter.Close();
                     }
-                    #endregion
-
+                    
                     // -- Manage pages number --
                     AddPageNumber(_fullPdfFilePath, _fullPdfFilePath);
 
@@ -547,8 +544,10 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                 }
             } 
             #endregion
-            return result;                    
+            return result;
         }
+        #endregion
+
 
         #region -- Generate Pdf Methods --      
         /// <summary>
@@ -615,12 +614,13 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
         }
         #endregion
 
-       
+
         /// <summary>
         /// -- Lecture de la base de données ou du fichier à la recherche !!!!!!!!!!!!!!!!! --
         /// </summary>
         /// <returns></returns>
-        public async Task<bool> ReadTextFileAsync()
+        //public async Task<bool> ManagefpPPV()
+        public bool ManagefpPPV()
         {           
             bool result = false;
 
@@ -640,6 +640,17 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                     (bfpReportHistoricDataSet.Tables[0].Rows.Count > 0))
                 {
                     #region -- With Multi threading --
+                    #region --- OK OK OK OK ---
+                    Thread letgoThread = new Thread(Do);
+
+                    // Commencer Thread (start thread).
+                    letgoThread.Start();
+
+                    // Dites au thread principal (voici main principal)
+                    // Attendez que letgoThread finisse, puis continuez à fonctionner.
+                    letgoThread.Join();
+                    #endregion
+
 
                     //int workerThreadCount;
                     //int ioThreadCount;
@@ -654,7 +665,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                     //    }
                     //});
 
-                    result = Process();
+                    //result = Process();
 
                     //Task currentThread = new Task(() =>
                     //{
@@ -672,6 +683,45 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                     //currentThread.Start();
                     //currentThread.Wait();
 
+                    // --------------------------------------------------------------------
+                    //Stopwatch stopwatch0 = new Stopwatch();
+                    //stopwatch0.Start();
+                    //Task currentThread = new Task(() =>
+                    //{
+                    //    lock (_lockObj)
+                    //    {
+                    //        result = Process();
+
+                    //        Console.WriteLine("\r\n Processing {0} on thread {1}", "TaxInvoiceNumber",
+                    //                    Thread.CurrentThread.ManagedThreadId);
+                    //    }
+                    //});
+
+                    //currentThread.Start();
+                    //currentThread.Wait();
+
+                    #region -- To TEST --
+                    /*
+                    List<bool> results = new List<bool>(_bfpReportHistoricDataSet.Tables[0].Rows.Count);
+                    Parallel.ForEach(_bfpReportHistoricsEnumerable, t =>
+                    {
+                        result = Process();
+                        lock (results)
+                        { // lock the list to avoid race conditions
+                            results.Add(result);
+                        }
+                    });
+
+                    */
+
+                    //Parallel.For(0, _bfpReportHistoricDataSet.Tables[0].Rows.Count, i =>
+                    //{
+
+                    //});
+
+                    //// -- To TEST --
+                    //var tasks = _bfpReportHistoricsEnumerable.Select(url => Task.Factory.StartNew(() => Process()));
+                    #endregion
                     #endregion
 
                     #region -- Without multithreading --
@@ -1027,6 +1077,14 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        private void Do()
+        {
+            Process();
+        }
+
+        /// <summary>
         /// --   --
         /// </summary>
         /// <param name="bfpReportHistoricDataSet"></param>
@@ -1039,182 +1097,187 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
             try
             {
                 #region -----------------------
-                DataSet bfpDataSet = DataTableHelper.ConvertToDataSet<BfpReportHistoric>(_bfpReportHistoricsEnumerable.ToList());
+                _bfpReportHistoricDataSet = DataTableHelper.ConvertToDataSet<BfpReportHistoric>(_bfpReportHistoricsEnumerable.ToList());
 
-                for (int i = 0; i < bfpDataSet.Tables[0].Rows.Count; i++)
+                Parallel.ForEach(_bfpReportHistoricsEnumerable, t =>
+                //Parallel.For(0, _bfpReportHistoricDataSet.Tables[0].Rows.Count, t =>
                 {
-                    var currentDataSet = bfpDataSet.Tables[0].Rows[i];
-
-                    // -- Retrieve BFP royalties historic from database --
-                    _bfpReportHistoric = _consolidateHelper.ConsolidateBfpReportHistoric(currentDataSet, _bfpReportHistoric);
-
-                    // -- Retrieve PDF template storeProceture --
-                    string spBfpRedevanceTemplate = $"{_bfpReportHistoric.SpReportBFPPdfTemplate} {_bfpReportHistoric.Fk_Bfp}, {_bfpReportHistoric.Fk_S_StTarif}";
-                    string spReportBfpRedevance = $"{_bfpReportHistoric.SpReportBFPRdvcPv} {_bfpReportHistoric.Fk_Bfp}";
-                    string spBfpContactRoyalty = $"SP_ContactsRecevantRdvc_SelectFromPv  15899"; // {_bfpReportHistoric.IdPv}"; //"15899 @e_Fk_Pv  --  387  3287  1639 --  442  -- ok 16088 ok";
-
-                    // -- Retrieve the Pdf template by BfpPvId and typeTarif from database --
-                    GetPdfDataTemplateSync(spBfpRedevanceTemplate);
-
-                    // --  --
-                    string idBfp = null;
-
-                    #region -- Manage Pdf Header page -- 
-                    if ((_headerDataSetTemple != null) && (_headerDataSetTemple.Tables.Count > 0) &&
-                        (_headerDataSetTemple.Tables[0].Rows.Count > 0))
+                    for (int i = 0; i < _bfpReportHistoricDataSet.Tables[0].Rows.Count; i++)
                     {
-                        _headerPage = _consolidateHelper.ConsolidateHeader(_headerDataSetTemple,
-                                        _adressTemple,
-                                        _bfpReportHistoric.Fk_S_ModeleEditionBfp,
-                                        _bfpReportHistoric.Fk_S_StTarif,
-                                        _headerPage);
-                    }
-                    #endregion
+                        var currentDataSet = _bfpReportHistoricDataSet.Tables[0].Rows[i];
 
-                    #region -- Manage Pdf footer page --
-                    if ((_footerDataSetTemple != null) && (_footerDataSetTemple.Tables.Count > 0) &&
-                        (_footerDataSetTemple.Tables[0].Rows.Count != 0))
-                    {
-                        // --  Loading the pdf footer data  --
-                        _footerPage = _consolidateHelper.ConsolidateFooter(_footerDataSetTemple, _footerPage);
-                    }
-                    #endregion
+                        // -- Retrieve BFP royalties historic from database --
+                        _bfpReportHistoric = _consolidateHelper.ConsolidateBfpReportHistoric(currentDataSet, _bfpReportHistoric);
 
-                    #region -- Manage RoyaltyFee Pdf body page --
-                    // -- Loading the pdf table data  --
-                    XDocument xDocument = GetXMLReportBFPRedevance(_bfpReportHistoric.Fk_Bfp);
+                        // -- Retrieve PDF template storeProceture --
+                        string spBfpRedevanceTemplate = $"{_bfpReportHistoric.SpReportBFPPdfTemplate} {_bfpReportHistoric.Fk_Bfp}, {_bfpReportHistoric.Fk_S_StTarif}";
+                        string spReportBfpRedevance = $"{_bfpReportHistoric.SpReportBFPRdvcPv} {_bfpReportHistoric.Fk_Bfp}";
+                        string spBfpContactRoyalty = $"SP_ContactsRecevantRdvc_SelectFromPv  15899"; // {_bfpReportHistoric.IdPv}"; //"15899 @e_Fk_Pv  --  387  3287  1639 --  442  -- ok 16088 ok";
 
-                    if (xDocument != null)
-                    {
-                        string dtSessionRfr = Regex.Split(_bfpReportHistoric.DtSessionRfr.Replace('/', '-'), " ")[0];
+                        // -- Retrieve the Pdf template by BfpPvId and typeTarif from database --
+                        GetPdfDataTemplateSync(spBfpRedevanceTemplate);
 
-                        string customFileName = $"{_bfpReportHistoric.IdPv}_Relevé de redevance Médiaperformances au {dtSessionRfr}";
+                        // --  --
+                        string idBfp = null;
 
-                        bool createPdfResult = CreateRoyaltyFeePdfFile(customFileName, _headerPage, _footerPage, xDocument);
-
-                        #region -- OK OK OK OK OK --  
-                        //createPdfResult = false;
-                        if (createPdfResult)
+                        #region -- Manage Pdf Header page -- 
+                        if ((_headerDataSetTemple != null) && (_headerDataSetTemple.Tables.Count > 0) &&
+                            (_headerDataSetTemple.Tables[0].Rows.Count > 0))
                         {
-                            #region -- Retrieve contacts redevance PV from PV and Send by mail --       _bfpReportHistoric.IdPv
+                            _headerPage = _consolidateHelper.ConsolidateHeader(_headerDataSetTemple,
+                                            _adressTemple,
+                                            _bfpReportHistoric.Fk_S_ModeleEditionBfp,
+                                            _bfpReportHistoric.Fk_S_StTarif,
+                                            _headerPage);
+                        }
+                        #endregion
 
-                            // -- Retrieve all associated contacts --
-                            DataSet contactDataSet = GetContactReceivingTheFeeSync(spBfpContactRoyalty);
+                        #region -- Manage Pdf footer page --
+                        if ((_footerDataSetTemple != null) && (_footerDataSetTemple.Tables.Count > 0) &&
+                            (_footerDataSetTemple.Tables[0].Rows.Count != 0))
+                        {
+                            // --  Loading the pdf footer data  --
+                            _footerPage = _consolidateHelper.ConsolidateFooter(_footerDataSetTemple, _footerPage);
+                        }
+                        #endregion
 
-                            // -- Check if "IsRdvcMailPv" and Get the Fk_Crm --  SP_Pv_RdvcTypeAndCrmId_SelectByPvId  idPv   15899                        
-                            DataSet contactPvInfoDataSet = ManageIfRedvanceMailPvChecked("SP_Pv_RdvcTypeAndCrmId_SelectByPvId", _bfpReportHistoric.IdPv);  //10
+                        #region -- Manage RoyaltyFee Pdf body page --
+                        // -- Loading the pdf table data  --
+                        XDocument xDocument = GetXMLReportBFPRedevance(_bfpReportHistoric.Fk_Bfp);
 
-                            if (contactDataSet != null && contactDataSet.Tables[0].Rows.Count > 0 ||
-                                contactPvInfoDataSet != null && contactPvInfoDataSet.Tables[0].Rows.Count > 0)
+                        if (xDocument != null)
+                        {
+                            string dtSessionRfr = Regex.Split(_bfpReportHistoric.DtSessionRfr.Replace('/', '-'), " ")[0];
+
+                            string customFileName = $"{_bfpReportHistoric.IdPv}_Relevé de redevance Médiaperformances au {dtSessionRfr}";
+
+                            bool createPdfResult = CreateRoyaltyFeePdfFile(customFileName, _headerPage, _footerPage, xDocument);
+
+                            #region -- OK OK OK OK OK --  
+                            //createPdfResult = false;
+                            if (createPdfResult)
                             {
-                                string mailPvAdress = string.Empty;
+                                #region -- Retrieve contacts redevance PV from PV and Send by mail --       _bfpReportHistoric.IdPv
 
-                                #region --  --
-                                var contactPv = _consolidateHelper.ConsolidateContactPvInfo(contactPvInfoDataSet, _contactRoyaltyFee);
+                                // -- Retrieve all associated contacts --
+                                DataSet contactDataSet = GetContactReceivingTheFeeSync(spBfpContactRoyalty);
 
-                                // -- If mailPv's added to recieving BFP repport contact --
-                                if (contactPv.IsRdvcMailPv)
+                                // -- Check if "IsRdvcMailPv" and Get the Fk_Crm --  SP_Pv_RdvcTypeAndCrmId_SelectByPvId  idPv   15899                        
+                                DataSet contactPvInfoDataSet = ManageIfRedvanceMailPvChecked("SP_Pv_RdvcTypeAndCrmId_SelectByPvId", _bfpReportHistoric.IdPv);  //10
+
+                                if (contactDataSet != null && contactDataSet.Tables[0].Rows.Count > 0 ||
+                                    contactPvInfoDataSet != null && contactPvInfoDataSet.Tables[0].Rows.Count > 0)
                                 {
-                                    // -- Retrieve the mail Pv --   // SP_Vue_Ext_Comptes_SelectFromId   ==> SP_RdvcGetMailPv_SelectByFk_Crm anIdCrm  9981
-                                    mailPvAdress = RetrieveMailPvByFkCrm("SP_RdvcGetMailPv_SelectByFk_Crm", contactPv.Fk_Crm);
-                                }
-                                #endregion
+                                    string mailPvAdress = string.Empty;
 
-                                var contactDictionnary = _consolidateHelper.ConsolidateRoyaltyFeeContact(contactDataSet, _contactRoyaltyFee);
+                                    #region --  --
+                                    var contactPv = _consolidateHelper.ConsolidateContactPvInfo(contactPvInfoDataSet, _contactRoyaltyFee);
 
-                                var mailTemplateDataSet = GetMailTemplateASync("SP_RedevanceBFPMailTemplate_Select", "Redevance par Mail");
-
-                                var mailTemplate = _consolidateHelper.BuildMailTemplate(mailTemplateDataSet, _mailTemplate);
-
-                                if (contactDictionnary != null && contactDictionnary.Count() > 0)
-                                {
-                                    if (!string.IsNullOrEmpty(mailPvAdress))
+                                    // -- If mailPv's added to recieving BFP repport contact --
+                                    if (contactPv.IsRdvcMailPv)
                                     {
-                                        contactDictionnary.Add("Mail Pv", mailPvAdress);
+                                        // -- Retrieve the mail Pv --   // SP_Vue_Ext_Comptes_SelectFromId   ==> SP_RdvcGetMailPv_SelectByFk_Crm anIdCrm  9981
+                                        mailPvAdress = RetrieveMailPvByFkCrm("SP_RdvcGetMailPv_SelectByFk_Crm", contactPv.Fk_Crm);
                                     }
+                                    #endregion
+
+                                    var contactDictionnary = _consolidateHelper.ConsolidateRoyaltyFeeContact(contactDataSet, _contactRoyaltyFee);
+
+                                    var mailTemplateDataSet = GetMailTemplateASync("SP_RedevanceBFPMailTemplate_Select", "Redevance par Mail");
+
+                                    var mailTemplate = _consolidateHelper.BuildMailTemplate(mailTemplateDataSet, _mailTemplate);
+
+                                    if (contactDictionnary != null && contactDictionnary.Count() > 0)
+                                    {
+                                        if (!string.IsNullOrEmpty(mailPvAdress))
+                                        {
+                                            contactDictionnary.Add("Mail Pv", mailPvAdress);
+                                        }
 
 #if DEBUG
-                                    contactDictionnary.Add("Yahoo", "michaelmabou@yahoo.fr");
-                                    contactDictionnary.Add("Gmail", "citoyenlamda@gmail.com");
-                                    //contactDictionnary.Add("Laurent", "lmaduraud@mediaperf.com");
-                                    //contactDictionnary.Add("David", "dzaguedoun@mediaperf.com");
-                                    //contactDictionnary.Add("Lucie", "LDUTHEIL@mediaperf.com");
+                                        contactDictionnary.Add("Yahoo", "michaelmabou@yahoo.fr");
+                                        contactDictionnary.Add("Gmail", "citoyenlamda@gmail.com");
+                                        //contactDictionnary.Add("Laurent", "lmaduraud@mediaperf.com");
+                                        //contactDictionnary.Add("David", "dzaguedoun@mediaperf.com");
+                                        //contactDictionnary.Add("Lucie", "LDUTHEIL@mediaperf.com");
 
-                                    _emailMessageService.IsPreviewMail = true;
-                                    _emailMessageService.AdminEmail = $"{Environment.UserName}@mediaperf.com";
+                                        _emailMessageService.IsPreviewMail = true;
+                                        _emailMessageService.AdminEmail = $"{Environment.UserName}@mediaperf.com";
 #else
                                     //_emailMessageService.Bcc = contactBuilder.ToString();
                                     //_emailMessageService.Cc = "michaelmabou@yahoo.fr";
                                     //_emailMessageService.ToEmail = contactBuilder.ToString();
 #endif
-                                    _emailMessageService.SenderEmail = "Redevance_Mediaperformance@mediaperf.com";
-                                    _emailMessageService.FilePath = _fullPdfFilePath;
-                                    _emailMessageService.MailBody = mailTemplate.Texte; //MAIL_TEMPLATE_PATH;
-                                    _emailMessageService.Suject = mailTemplate.Objet;
+                                        _emailMessageService.SenderEmail = "Redevance_Mediaperformance@mediaperf.com";
+                                        _emailMessageService.FilePath = _fullPdfFilePath;
+                                        _emailMessageService.MailBody = mailTemplate.Texte; //MAIL_TEMPLATE_PATH;
+                                        _emailMessageService.Suject = mailTemplate.Objet;
 
-                                    bool sendMailResult = SendEmailHelper.SendEmail(_emailMessageService, contactDictionnary, _bfpReportHistoric.DtSessionRfr);
-                                    //sendMailResult = false;
-                                    if (sendMailResult)
-                                    {
-                                        bool updapteResult = UpdateBFPRoyaltiesHistoric(_bfpReportHistoric.Id);
-                                        updapteResult = false;
-                                        if (updapteResult)
+                                        bool sendMailResult = SendEmailHelper.SendEmail(_emailMessageService, contactDictionnary, _bfpReportHistoric.DtSessionRfr);
+                                        //sendMailResult = false;
+                                        if (sendMailResult)
                                         {
-                                            // -- Change BFP status to Lancé --
-                                            bool updateResult = UpdateBFPChangeStatusEnvoiMail("SP_BFP_Set_SttRdvcMail_Update", _headerPage.IdBFP);
-                                            //updapteResult = false;
-                                            if (updateResult)
+                                            bool updapteResult = UpdateBFPRoyaltiesHistoric(_bfpReportHistoric.Id);
+                                            updapteResult = false;
+                                            if (updapteResult)
                                             {
-                                                // -- Delete pdf file after sending by mail --   @"C:\Users\mMABOU\Desktop\PDFFiles";  //backupDirectoryReports +"\\"
-                                                // string.Concat(PDF_REPOSITORY_PATH, customPdfFileName, extension);
-                                                string fileTodelete = string.Concat(PDF_REPOSITORY_PATH, customFileName, ".pdf");
-                                                //File.SetAttributes(fileTodelete, FileAttributes.Normal);
-                                                //File.Delete(fileTodelete);
+                                                // -- Change BFP status to Lancé --
+                                                bool updateResult = UpdateBFPChangeStatusEnvoiMail("SP_BFP_Set_SttRdvcMail_Update", _headerPage.IdBFP);
+                                                //updapteResult = false;
+                                                if (updateResult)
+                                                {
+                                                    // -- Delete pdf file after sending by mail --   @"C:\Users\mMABOU\Desktop\PDFFiles";  //backupDirectoryReports +"\\"
+                                                    // string.Concat(PDF_REPOSITORY_PATH, customPdfFileName, extension);
+                                                    string fileTodelete = string.Concat(PDF_REPOSITORY_PATH, customFileName, ".pdf");
+                                                    //File.SetAttributes(fileTodelete, FileAttributes.Normal);
+                                                    //File.Delete(fileTodelete);
 
-                                                result = true;
-                                                _logger.Debug($"Fin génération, envoi envoi, MAJ de l'historique et du PV en fin Suppression du fichier PDF. [{ _bfpReportHistoric.IdPv }]");
+                                                    result = true;
+                                                    _logger.Debug($"Fin génération, envoi envoi, MAJ de l'historique et du PV en fin Suppression du fichier PDF. [{ _bfpReportHistoric.IdPv }]");
+                                                }
+                                                else
+                                                {
+                                                    result = false;
+                                                    ErrorMessage = $"Problème survenu lors de la MAJ du statut. [{ _bfpReportHistoric.IdPv }]";
+                                                    _logger.Debug(ErrorMessage);
+                                                }
                                             }
                                             else
                                             {
-                                                result = false;
-                                                ErrorMessage = $"Problème survenu lors de la MAJ du statut. [{ _bfpReportHistoric.IdPv }]";
+                                                ErrorMessage = $"Problème survenu lors de la mise à jour du BFP [{ _headerPage.IdBFP }]";
                                                 _logger.Debug(ErrorMessage);
+                                                result = false;
                                             }
                                         }
                                         else
                                         {
-                                            ErrorMessage = $"Problème survenu lors de la mise à jour du BFP [{ _headerPage.IdBFP }]";
+                                            ErrorMessage = $"Problème survenu lors de l'envoie par mail du BFP [{ _headerPage.IdBFP }]";
                                             _logger.Debug(ErrorMessage);
                                             result = false;
                                         }
-                                    }
-                                    else
-                                    {
-                                        ErrorMessage = $"Problème survenu lors de l'envoie par mail du BFP [{ _headerPage.IdBFP }]";
-                                        _logger.Debug(ErrorMessage);
-                                        result = false;
-                                    }
-                                } // Pas de contact associé à cette redevance.
-                                #endregion
+                                    } // Pas de contact associé à cette redevance.
+                                    #endregion
+                                }
+                                else
+                                {
+                                    ErrorMessage = $"Impossible d'envoyer ce mail car il n'y a aucun contact associé";
+                                    _logger.Debug(ErrorMessage);
+                                    result = false;
+                                }
                             }
                             else
                             {
-                                ErrorMessage = $"Impossible d'envoyer ce mail car il n'y a aucun contact associé";
+                                //ErrorMessage = $"Erreur lors de la création du PDF pour le BFP [{ _headerPage.IdBFP }]";
                                 _logger.Debug(ErrorMessage);
                                 result = false;
                             }
-                        }
-                        else
-                        {
-                            //ErrorMessage = $"Erreur lors de la création du PDF pour le BFP [{ _headerPage.IdBFP }]";
-                            _logger.Debug(ErrorMessage);
-                            result = false;
+                            #endregion
                         }
                         #endregion
                     }
-                    #endregion
-                    #endregion
-                }
+
+                });
+                #endregion
             }
             catch (Exception exception)
             {

@@ -3,6 +3,5 @@
     public interface IBaseEntity
     {
         long IdBFP { get; set; }
-
     }
 }
