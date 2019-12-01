@@ -106,62 +106,61 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
             return new SqlConnection(_connectionStringHelper.GetConnectionString());
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="repositoryPath"></param>
-        /// <param name="headerPage"></param>
-        /// <param name="footerPage"></param>
-        /// <param name="royaltyFeeDataSet"></param>
-        /// <returns>bool</returns>
+        #region -------------------------------------------
         public bool CreateRoyaltyFeePdfFile(string customPdfFileName,
-            IHeaderPage headerPage,
-            IFooterPage footerPage,
-            XDocument xDocument)
+             IHeaderPage headerPage,
+             IFooterPage footerPage,
+             XDocument xDocument)
         {
             _logger.Debug($"==> Début création du fichier Pdf");
 
-            #region -- Declare and Init --
+            #region -- Fields --
             bool result = false;
+
             double total = 0;
-            double ssTotal = 0;
+            double totalHT = 0;
             int countDetail = 0;
+            int totalCountDetail = 0;
             double totalTTC = 0;
             double montantTva = 0;
             double totalHtArrondi = 0;
             string idPv = null;
             string dpName = null;
-            string commune = null;
-            string enseigne = null;
+            string communeName = null;
+            string enseigneName = null;
             string productName = null;
-            IEnumerable<XElement> _detailXElements = null; 
-           
+            IEnumerable<XElement> _detailXElements = null;
+            #endregion
+
+            #region --   --
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
             //PdfWriter masterWriter = null;
             DateTime fileCreationDatetime = DateTime.Now;
-            string imgPath = "https://ftp.mediaperf.com/img/logo.gif";
 
             var widthPercentage = 96;
 
             string extension = ".pdf";
             string date = fileCreationDatetime.ToString(@"ddMMyyyy");
             string fileName = $"_{date}{extension}";
-                                   
+
             _logger.Debug($"==> Génération du chemin du fichier");
             _fullPdfFilePath = string.Concat(PDF_REPOSITORY_PATH, customPdfFileName, extension);
-            #endregion
 
             if (File.Exists(_fullPdfFilePath))
             {
                 File.Delete(_fullPdfFilePath);
             }
+            #endregion
 
             try
             {
                 // -- Define royalTies columns widths --
                 float[] widths = new float[] { 10f, 60f, 20f, 20f };
+
+
+                //xDocument = XDocument.Load("..\\..\\Product.xml");
 
                 if (xDocument != null && xDocument.Descendants("TypeProduit").Elements("Produit").Count() > 0)
                 {
@@ -185,7 +184,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         ErrorMessage = null;
 
                         //// -- Setting Encryption properties --
-                        //masterWriter.SetEncryption(PdfWriter.STRENGTH40BITS, "Vers@illes78", "null", PdfWriter.ALLOW_COPY);
+                        //masterWriter.SetEncryption(PdfWriter.STRENGTH40BITS, "Vers@illes78", "000000", PdfWriter.ALLOW_COPY);
 
                         //// -- Add Event in all pages --
                         masterWriter.PageEvent = new ITextEvents(headerPage, footerPage, _countPv);
@@ -198,22 +197,19 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         #region -- Define fonts --
                         BaseFont baseFont = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, false);
                         var noneFontOneWhite = new Font(baseFont, 1, Font.NORMAL, BaseColor.WHITE);
-                        var boldFontEleventBlack = new Font(baseFont, 11, Font.BOLD, BaseColor.BLACK);
-                        var normalFontEleventBlack = new Font(baseFont, 11, Font.NORMAL, BaseColor.BLACK);
+                        var normalFontEightBlack = new Font(baseFont, 8, Font.NORMAL, BaseColor.BLACK);
+                        var boldFontEightBlack = new Font(baseFont, 8, Font.BOLD, BaseColor.BLACK);
                         var boldFontNineBlack = new Font(baseFont, 9, Font.BOLD, BaseColor.BLACK);
                         var normalFontNimeBlack = new Font(baseFont, 9, Font.NORMAL, BaseColor.BLACK);
-                        var boldFontTwelveBlack = new Font(baseFont, 12, Font.BOLD, BaseColor.BLACK);
-                        var normalFontTwelveBlack = new Font(baseFont, 12, Font.NORMAL, BaseColor.BLACK);
                         var boldFontTenBlack = new Font(baseFont, 10, Font.BOLD, BaseColor.BLACK);
                         var normalFontTenBlack = new Font(baseFont, 10, Font.NORMAL, BaseColor.BLACK);
+                        var boldFontEleventBlack = new Font(baseFont, 11, Font.BOLD, BaseColor.BLACK);
+                        var normalFontEleventBlack = new Font(baseFont, 11, Font.NORMAL, BaseColor.BLACK);
+                        var boldFontTwelveBlack = new Font(baseFont, 12, Font.BOLD, BaseColor.BLACK);
+                        var normalFontTwelveBlack = new Font(baseFont, 12, Font.NORMAL, BaseColor.BLACK);
                         #endregion
 
-                        //// -- Draw horizontal line. --
-                        //Paragraph firstLineSeparator = new Paragraph(new Chunk(lineSeparator));
-                        //firstLineSeparator.SpacingBefore = 120f;
-                        //masterDocument.Add(firstLineSeparator);
-
-                        #region -- Manage XML --
+                        #region -- Generate XML Grid --
                         PdfPTable royaltiesTables = new PdfPTable(4);
 
                         royaltiesTables.WidthPercentage = 96;
@@ -228,29 +224,29 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         royaltiesTables.SetWidths(widths);
 
                         #region -- Table Header --
-                        PdfPCell headerCell = new PdfPCell(new Phrase("No", boldFontTwelveBlack));
+                        PdfPCell headerCell = new PdfPCell(new Phrase("No", boldFontTenBlack));
                         headerCell.Colspan = 0;
-                        headerCell.MinimumHeight = 20;
+                        headerCell.MinimumHeight = 18;
                         headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
                         headerCell.HorizontalAlignment = Element.ALIGN_RIGHT;
                         headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                         royaltiesTables.AddCell(headerCell);
 
-                        headerCell = new PdfPCell(new Phrase("Campagne", boldFontTwelveBlack));
+                        headerCell = new PdfPCell(new Phrase("Campagne", boldFontTenBlack));
                         headerCell.Colspan = 0;
                         headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
                         headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                         headerCell.HorizontalAlignment = 0;
                         royaltiesTables.AddCell(headerCell);
 
-                        headerCell = new PdfPCell(new Phrase("Du", boldFontTwelveBlack));
+                        headerCell = new PdfPCell(new Phrase("Du", boldFontTenBlack));
                         headerCell.Colspan = 0;
                         headerCell.HorizontalAlignment = 1;
                         headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
                         headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                         royaltiesTables.AddCell(headerCell);
 
-                        headerCell = new PdfPCell(new Phrase("Au", boldFontTwelveBlack));
+                        headerCell = new PdfPCell(new Phrase("Au", boldFontTenBlack));
                         headerCell.Colspan = 0;
                         headerCell.HorizontalAlignment = 1;
                         headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
@@ -259,116 +255,162 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         #endregion
 
                         #region -- Generate pdf group grid --
-                        foreach (XElement typeproduit in xDocument.Descendants(nameof(_royaltyFee.TypeProduit)))
+                        
+                        foreach (XElement communeXElement in xDocument.Descendants(nameof(_royaltyFee.Commune)))
                         {
-                            var _produitXElements = typeproduit.Elements(nameof(_royaltyFee.Produit));
+                            var _communesElement = communeXElement.Elements(nameof(_royaltyFee.TypeProduit));
+                            int tmpCountDetail = countDetail;
+                            countDetail = 0;
 
-                            total = 0;
-
-                            foreach (XElement element in _produitXElements)
+                            foreach (XElement typeproduit in _communesElement)
                             {
-                                productName = element.FirstAttribute?.Value;
+                                var _produitsXElement = typeproduit.Elements(nameof(_royaltyFee.Produit));
+                                tmpCountDetail = countDetail;
+                                double tempTotal = total;
+                                total = 0;
 
-                                var _dpXElements = element.Elements(nameof(_royaltyFee.Dp));
-
-                                foreach (XElement childEllement in _dpXElements)
+                                foreach (XElement element in _produitsXElement)
                                 {
-                                    dpName = childEllement.Attribute("Nom").Value;
-                                    PdfPCell productNameCell = new PdfPCell(new Phrase($"{ productName }\n   { dpName }", boldFontTenBlack));
-                                    productNameCell.Colspan = 4;
-                                    productNameCell.MinimumHeight = 23;
-                                    productNameCell.Padding = 3;
-                                    productNameCell.HorizontalAlignment = 0;
-                                    royaltiesTables.AddCell(productNameCell);
+                                    productName = element.FirstAttribute?.Value;
 
-                                    _detailXElements = childEllement.Elements(nameof(_royaltyFee.Details));
-                                    double sstotal = 0;
-                                    foreach (XElement detailXML in _detailXElements)
+                                    var _dpsXElement = element.Elements(nameof(_royaltyFee.Dp));
+
+                                    foreach (XElement childEllement in _dpsXElement)
                                     {
-                                        PdfPCell detailCell = new PdfPCell(
-                                            new Phrase((string)(detailXML.Element(nameof(_royaltyFee.IdCmp))),
-                                            normalFontTenBlack));
+                                        int tmpCount = 0;
+                                        totalCountDetail = countDetail;
+                                        countDetail = 0;
+
+                                        dpName = childEllement.Attribute("Nom").Value;
+                                        PdfPCell productNameCell = new PdfPCell(new Phrase($"{ productName }\n   { dpName }", boldFontNineBlack));
+                                        productNameCell.Colspan = 4;
+                                        productNameCell.MinimumHeight = 23;
+                                        productNameCell.Padding = 3;
+                                        productNameCell.HorizontalAlignment = 0;
+                                        royaltiesTables.AddCell(productNameCell);
+
+                                        _detailXElements = childEllement.Elements(nameof(_royaltyFee.Details));
+                                        double sstotal = 0;
+                                        foreach (XElement detailXML in _detailXElements)
+                                        {
+                                            PdfPCell detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.IdCmp))),
+                                                normalFontNimeBlack));
                                             detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                             detailCell.HorizontalAlignment = Element.ALIGN_RIGHT;
                                             royaltiesTables.AddCell(detailCell);
 
-                                        detailCell = new PdfPCell(
-                                            new Phrase((string)(detailXML.Element(nameof(_royaltyFee.Campagne))),
-                                            normalFontTenBlack));
+                                            detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.Campagne))),
+                                                normalFontNimeBlack));
                                             detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                             detailCell.HorizontalAlignment = Element.ALIGN_LEFT;
                                             royaltiesTables.AddCell(detailCell);
 
-                                        detailCell = new PdfPCell(
-                                            new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateDebut))),
-                                            normalFontTenBlack));
+                                            detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateDebut))),
+                                                normalFontNimeBlack));
                                             detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                             detailCell.HorizontalAlignment = Element.ALIGN_CENTER;
                                             royaltiesTables.AddCell(detailCell);
 
-                                        detailCell = new PdfPCell(
-                                            new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateFin))),
-                                            normalFontTenBlack));
+                                            detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateFin))),
+                                                normalFontNimeBlack));
                                             detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                                             detailCell.HorizontalAlignment = Element.ALIGN_CENTER;
                                             royaltiesTables.AddCell(detailCell);
 
-                                        enseigne = (string)(detailXML.Element(nameof(_royaltyFee.Enseigne)));
-                                        commune = (string)(detailXML.Element(nameof(_royaltyFee.Commune)));
-                                        idPv = (string)(detailXML.Element(nameof(_royaltyFee.IdPv)));
+                                            enseigneName = (string)(detailXML.Element(nameof(_royaltyFee.Enseigne)));
+                                            communeName = (string)(detailXML.Element(nameof(_royaltyFee.Commune)));
+                                            idPv = (string)(detailXML.Element(nameof(_royaltyFee.IdPv)));
 
-                                        sstotal += double.Parse(detailXML.Element(nameof(_royaltyFee.MontantRdvcHT)).Value.Replace(".", ","));
+                                            sstotal += double.Parse(detailXML.Element(nameof(_royaltyFee.MontantRdvcHT)).Value.Replace(".", ","));
+                                        }
+
+                                        // -- Set Sub Total Name --
+                                        PdfPCell subTotalCell = new PdfPCell(new Phrase("Sous Total", boldFontNineBlack));
+                                        subTotalCell.Colspan = 2;
+                                        subTotalCell.PaddingRight = 10;
+                                        subTotalCell.PaddingBottom = 5;
+                                        subTotalCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                                        subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        royaltiesTables.AddCell(subTotalCell);
+
+                                        // -- Set Sub Total Value --
+                                        countDetail = _detailXElements.Count();
+                                        totalCountDetail = totalCountDetail + countDetail;
+                                        subTotalCell = new PdfPCell(new Phrase(countDetail.ToString(), boldFontNineBlack));
+                                        subTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                        subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        royaltiesTables.AddCell(subTotalCell);
+
+                                        sstotal = Math.Round(sstotal, 2);
+                                        var ssTotalPhrase = new Phrase(sstotal.ToString(), boldFontNineBlack);
+                                        PdfPCell cel = new PdfPCell(ssTotalPhrase);
+                                        cel.HorizontalAlignment = Element.ALIGN_CENTER;
+                                        cel.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        royaltiesTables.AddCell(cel);
+
+                                        total += sstotal;
                                     }
-
-                                    // -- Set Sub Total Name --
-                                    PdfPCell subTotalCell = new PdfPCell(new Phrase("Sous Total", boldFontTenBlack));
-                                    subTotalCell.Colspan = 2;
-                                    subTotalCell.PaddingRight = 10;
-                                    subTotalCell.PaddingBottom = 5;
-                                    subTotalCell.HorizontalAlignment = Element.ALIGN_RIGHT;
-                                    subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    royaltiesTables.AddCell(subTotalCell);
-
-                                    // -- Set Sub Total Value --
-                                    countDetail = _detailXElements.Count();
-                                    subTotalCell = new PdfPCell(new Phrase(countDetail.ToString(), boldFontTenBlack));
-                                    subTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                                    subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    royaltiesTables.AddCell(subTotalCell);
-
-                                    var ssTotalPhrase = new Phrase(sstotal.ToString(), boldFontTenBlack);
-                                    PdfPCell cel = new PdfPCell(ssTotalPhrase);
-                                    cel.HorizontalAlignment = Element.ALIGN_CENTER;
-                                    cel.VerticalAlignment = Element.ALIGN_MIDDLE;
-                                    royaltiesTables.AddCell(cel);
-
-                                    total += sstotal;
                                 }
-                            }
-                                                        
-                            string productType = typeproduit.Attribute("Nom").Value;
 
-                            // -- Set Total Name --
-                            totalHtArrondi = Math.Round(total, 2);
-                            Phrase productTypePhrase = new Phrase($"Total  { productType }", boldFontTenBlack);
-                            PdfPCell productTypeCell = new PdfPCell(productTypePhrase);
-                            productTypeCell.Colspan = 3;
-                            productTypeCell.PaddingRight = 10;
-                            productTypeCell.PaddingBottom = 5;
-                            productTypeCell.MinimumHeight = 15;
-                            productTypeCell.HorizontalAlignment = Element.ALIGN_RIGHT;
-                            productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                            royaltiesTables.AddCell(productTypeCell);
-                                                      
-                            productTypePhrase = new Phrase(totalHtArrondi.ToString(), boldFontTenBlack);  //totalHtArrondi.ToString()
-                            productTypeCell = new PdfPCell(productTypePhrase);
-                            productTypeCell.PaddingRight = 10;
-                            productTypeCell.PaddingBottom = 5;
-                            productTypeCell.MinimumHeight = 15;
-                            productTypeCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-                            productTypeCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                            royaltiesTables.AddCell(productTypeCell);
+                                string productType = typeproduit.Attribute("Nom").Value;
+
+                                totalHT = tempTotal + total;
+                                //countElementByProduct = countElementByProductType + countElementByDp;
+                                totalCountDetail += totalCountDetail;
+
+                                // -- Set Total Name --
+                                #region -- Manage Total by product type --
+                                totalHtArrondi = Math.Round(totalHT, 2);
+                                Phrase productTypePhrase = new Phrase($"Total  { productType }", boldFontNineBlack);
+                                PdfPCell productTypeCell = new PdfPCell(productTypePhrase);
+                                productTypeCell.Colspan = 3;
+                                productTypeCell.PaddingRight = 10;
+                                productTypeCell.PaddingBottom = 5;
+                                productTypeCell.MinimumHeight = 15;
+                                productTypeCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                                productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(productTypeCell);
+
+                                double t = Math.Round(total, 2);
+                                productTypePhrase = new Phrase(t.ToString(), boldFontNineBlack);  //totalHtArrondi.ToString()
+                                productTypeCell = new PdfPCell(productTypePhrase);
+                                productTypeCell.PaddingRight = 10;
+                                productTypeCell.PaddingBottom = 5;
+                                productTypeCell.MinimumHeight = 15;
+                                productTypeCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                                productTypeCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(productTypeCell);
+                                #endregion
+                            }
+
+                            // -- Set Sub table data --
+                            if (countDetail > 0)
+                            {
+                                PdfPCell footerCell = new PdfPCell(
+                                    new Phrase($" { idPv } - { enseigneName }  -  { communeName }", boldFontNineBlack));
+                                footerCell.Colspan = 2;
+                                footerCell.PaddingRight = 10;
+                                footerCell.PaddingBottom = 5;
+                                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                                footerCell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(footerCell);
+
+                                footerCell = new PdfPCell(
+                                    new Phrase($"Total    { totalCountDetail }         { totalHT.ToString() }", boldFontNineBlack));
+                                footerCell.Colspan = 2;
+                                footerCell.PaddingRight = 10;
+                                footerCell.PaddingBottom = 5;
+                                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                                footerCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(footerCell);
+                            }
                         }
 
                         masterDocument.Add(royaltiesTables);
@@ -377,48 +419,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         royaltiesTables.SpacingAfter = 5f;
                         #endregion
                         #endregion
-
-                        #region -- Table Footer --                    
-                        PdfPTable footerTable = new PdfPTable(4);
-                        footerTable.WidthPercentage = widthPercentage;
-                        footerTable.SetWidths(widths);
-
-                        PdfPCell footerCell = new PdfPCell(new Phrase(idPv, boldFontTenBlack));
-                        footerCell.Colspan = 0;
-                        footerCell.MinimumHeight = 16;
-                        footerCell.PaddingBottom = 5;
-                        footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-                        footerCell.HorizontalAlignment = Element.ALIGN_LEFT;
-                        footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                        footerTable.AddCell(footerCell);
-
-                        footerCell = new PdfPCell(new Phrase($"{ enseigne} - { commune }", boldFontTenBlack));
-                        footerCell.Colspan = 0;
-                        footerCell.PaddingBottom = 5;
-                        footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-                        footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                        footerCell.HorizontalAlignment = Element.ALIGN_LEFT;
-                        footerTable.AddCell(footerCell);
-
-                        footerCell = new PdfPCell(new Phrase($"Total  { _countPv.ToString() }", boldFontTenBlack));
-                        footerCell.Colspan = 0;
-                        footerCell.PaddingBottom = 5;
-                        footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-                        footerCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                        footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                        footerTable.AddCell(footerCell);
-
-                        footerCell = new PdfPCell(new Phrase($"{ _footerPage.TotalHT.ToString() }", boldFontTenBlack));
-                        footerCell.Colspan = 0;
-                        footerCell.PaddingBottom = 5;
-                        footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-                        footerCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                        footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                        footerTable.AddCell(footerCell);
-
-                        masterDocument.Add(footerTable);
-                        #endregion
-
+                        
                         //// -- Draw interemediate horizontal line. --
                         //var virtualLineSeparator = new LineSeparator(0.0F, 96.0F, BaseColor.BLUE, Element.ALIGN_CENTER, 1);
                         //Paragraph interemediateLineSeparator = new Paragraph(new Chunk(virtualLineSeparator));
@@ -439,6 +440,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         royalFeeTotalTable.AddCell(royalFeeTotalCell);
 
+                        string tva = "20,00";
                         royalFeeTotalCell = new PdfPCell(new Phrase($"TVA {_footerPage.TxTva}", boldFontNineBlack));
                         royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                         royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -454,17 +456,20 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         royalFeeTotalTable.AddCell(royalFeeTotalCell);
 
-                        royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalHT }", boldFontNineBlack));  //total.ToString()
+                        var tHt = total.ToString();
+                        royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalHT }", boldFontNineBlack));  //_footerPage.TotalHT //totalHtArrondi.ToString()
                         royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                         royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         royalFeeTotalTable.AddCell(royalFeeTotalCell);
 
-                        royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalTVA }", boldFontNineBlack));  //montantTva.ToString()
+                        montantTva = totalHtArrondi * _footerPage.TxTva / 100;
+                        royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalTVA }", boldFontNineBlack));  //_footerPage.TotalTVA //montantTva
                         royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                         royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         royalFeeTotalTable.AddCell(royalFeeTotalCell);
 
-                        royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalTTC }", boldFontNineBlack));   //totalTTC.ToString()
+                        totalTTC = montantTva + totalHtArrondi;
+                        royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalTTC }", boldFontNineBlack));  //_footerPage.TotalTTC  //totalTTC
                         royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
                         royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         royalFeeTotalTable.AddCell(royalFeeTotalCell);
@@ -482,7 +487,8 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                         masterStream.Close();
                         masterWriter.Close();
                     }
-                    
+                    #endregion
+
                     // -- Manage pages number --
                     AddPageNumber(_fullPdfFilePath, _fullPdfFilePath);
 
@@ -542,10 +548,454 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                                               MessageBoxImage.Error,
                                               MessageBoxResult.Yes);
                 }
-            } 
+            }
             #endregion
             return result;
         }
+        #endregion
+
+        #region MyRegion
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="repositoryPath"></param>
+        ///// <param name="headerPage"></param>
+        ///// <param name="footerPage"></param>
+        ///// <param name="royaltyFeeDataSet"></param>
+        ///// <returns>bool</returns>
+        //public bool CreateRoyaltyFeePdfFile(string customPdfFileName,
+        //    IHeaderPage headerPage,
+        //    IFooterPage footerPage,
+        //    XDocument xDocument)
+        //{
+        //    _logger.Debug($"==> Début création du fichier Pdf");
+
+        //    #region -- Declare and Init --
+        //    bool result = false;
+        //    double total = 0;
+        //    double ssTotal = 0;
+        //    int countElementByDp = 0;
+        //    double totalTTC = 0;
+        //    double montantTva = 0;
+        //    double totalHtArrondi = 0;
+        //    string idPv = null;
+        //    string dpName = null;
+        //    string commune = null;
+        //    string enseigne = null;
+        //    string productName = null;
+        //    IEnumerable<XElement> _detailXElements = null;
+
+        //    Stopwatch stopwatch = new Stopwatch();
+        //    stopwatch.Start();
+
+        //    //PdfWriter masterWriter = null;
+        //    DateTime fileCreationDatetime = DateTime.Now;
+        //    string imgPath = "https://ftp.mediaperf.com/img/logo.gif";
+
+        //    var widthPercentage = 96;
+
+        //    string extension = ".pdf";
+        //    string date = fileCreationDatetime.ToString(@"ddMMyyyy");
+        //    string fileName = $"_{date}{extension}";
+
+        //    _logger.Debug($"==> Génération du chemin du fichier");
+        //    _fullPdfFilePath = string.Concat(PDF_REPOSITORY_PATH, customPdfFileName, extension);
+        //    #endregion
+
+        //    if (File.Exists(_fullPdfFilePath))
+        //    {
+        //        File.Delete(_fullPdfFilePath);
+        //    }
+
+        //    try
+        //    {
+        //        // -- Define royalTies columns widths --
+        //        float[] widths = new float[] { 10f, 60f, 20f, 20f };
+
+        //        if (xDocument != null && xDocument.Descendants("TypeProduit").Elements("Produit").Count() > 0)
+        //        {
+        //            // -- Retrieve count Pv --
+        //            _countPv = xDocument.Descendants("TypeProduit").Elements("Produit").Elements("Dp").Elements("Details").Count();
+
+        //            // -- MMA All Using has changed --
+        //            using (var masterStream = new FileStream(_fullPdfFilePath, FileMode.Create))
+        //            using (Document masterDocument = new Document(PageSize.A4, 10f, 10f, 340f, 120f))   //(PageSize.A4, 5, 12, 20, 10)  //new Document(PageSize.A4, 10f, 10f, 350f, 150f))  PageSize.A4, 10f, 10f, 368f, 100f)
+        //            using (PdfWriter masterWriter = PdfWriter.GetInstance(masterDocument, masterStream))
+        //            {
+        //                #region -- Setting Document properties e.g. --
+        //                masterDocument.AddTitle("Envoi des relevés de redevance par mail");
+        //                masterDocument.AddSubject("Génération de relevés de redevance en PDF pour envoi par mail");
+        //                masterDocument.AddKeywords("Metadata, iTextSharp 5.4.13.1");
+        //                masterDocument.AddCreator("MMA");
+        //                masterDocument.AddAuthor("M MABOU");
+        //                masterDocument.AddHeader("Some thing", "Header");
+        //                #endregion
+
+        //                ErrorMessage = null;
+
+        //                //// -- Setting Encryption properties --
+        //                //masterWriter.SetEncryption(PdfWriter.STRENGTH40BITS, "Vers@illes78", "null", PdfWriter.ALLOW_COPY);
+
+        //                //// -- Add Event in all pages --
+        //                masterWriter.PageEvent = new ITextEvents(headerPage, footerPage, _countPv);
+
+        //                masterDocument.Open();
+
+        //                PdfContentByte pdfContentByte = masterWriter.DirectContent;
+        //                var lineSeparator = new LineSeparator(2.0F, 96.0F, BaseColor.RED, Element.ALIGN_CENTER, 1);
+
+        //                #region -- Define fonts --
+        //                BaseFont baseFont = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, false);
+        //                var noneFontOneWhite = new Font(baseFont, 1, Font.NORMAL, BaseColor.WHITE);
+        //                var boldFontEleventBlack = new Font(baseFont, 11, Font.BOLD, BaseColor.BLACK);
+        //                var normalFontEleventBlack = new Font(baseFont, 11, Font.NORMAL, BaseColor.BLACK);
+        //                var boldFontNineBlack = new Font(baseFont, 9, Font.BOLD, BaseColor.BLACK);
+        //                var normalFontNimeBlack = new Font(baseFont, 9, Font.NORMAL, BaseColor.BLACK);
+        //                var boldFontTwelveBlack = new Font(baseFont, 12, Font.BOLD, BaseColor.BLACK);
+        //                var normalFontTwelveBlack = new Font(baseFont, 12, Font.NORMAL, BaseColor.BLACK);
+        //                var boldFontTenBlack = new Font(baseFont, 10, Font.BOLD, BaseColor.BLACK);
+        //                var normalFontTenBlack = new Font(baseFont, 10, Font.NORMAL, BaseColor.BLACK);
+        //                #endregion
+
+        //                //// -- Draw horizontal line. --
+        //                //Paragraph firstLineSeparator = new Paragraph(new Chunk(lineSeparator));
+        //                //firstLineSeparator.SpacingBefore = 120f;
+        //                //masterDocument.Add(firstLineSeparator);
+
+        //                #region -- Manage XML --
+        //                PdfPTable royaltiesTables = new PdfPTable(4);
+
+        //                royaltiesTables.WidthPercentage = 96;
+
+        //                // -- Add Header row for every page --
+        //                royaltiesTables.HeaderRows = 1;
+
+        //                // -- Set spacing between gridView and  --
+        //                royaltiesTables.SpacingBefore = 5f;
+
+        //                // --   --
+        //                royaltiesTables.SetWidths(widths);
+
+        //                #region -- Table Header --
+        //                PdfPCell headerCell = new PdfPCell(new Phrase("No", boldFontTwelveBlack));
+        //                headerCell.Colspan = 0;
+        //                headerCell.MinimumHeight = 20;
+        //                headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                headerCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+        //                headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royaltiesTables.AddCell(headerCell);
+
+        //                headerCell = new PdfPCell(new Phrase("Campagne", boldFontTwelveBlack));
+        //                headerCell.Colspan = 0;
+        //                headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                headerCell.HorizontalAlignment = 0;
+        //                royaltiesTables.AddCell(headerCell);
+
+        //                headerCell = new PdfPCell(new Phrase("Du", boldFontTwelveBlack));
+        //                headerCell.Colspan = 0;
+        //                headerCell.HorizontalAlignment = 1;
+        //                headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royaltiesTables.AddCell(headerCell);
+
+        //                headerCell = new PdfPCell(new Phrase("Au", boldFontTwelveBlack));
+        //                headerCell.Colspan = 0;
+        //                headerCell.HorizontalAlignment = 1;
+        //                headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royaltiesTables.AddCell(headerCell);
+        //                #endregion
+
+        //                #region -- Generate pdf group grid --
+        //                foreach (XElement typeproduit in xDocument.Descendants(nameof(_royaltyFee.TypeProduit)))
+        //                {
+        //                    var _produitXElements = typeproduit.Elements(nameof(_royaltyFee.Produit));
+
+        //                    total = 0;
+
+        //                    foreach (XElement element in _produitXElements)
+        //                    {
+        //                        productName = element.FirstAttribute?.Value;
+
+        //                        var _dpXElements = element.Elements(nameof(_royaltyFee.Dp));
+
+        //                        foreach (XElement childEllement in _dpXElements)
+        //                        {
+        //                            dpName = childEllement.Attribute("Nom").Value;
+        //                            PdfPCell productNameCell = new PdfPCell(new Phrase($"{ productName }\n   { dpName }", boldFontTenBlack));
+        //                            productNameCell.Colspan = 4;
+        //                            productNameCell.MinimumHeight = 23;
+        //                            productNameCell.Padding = 3;
+        //                            productNameCell.HorizontalAlignment = 0;
+        //                            royaltiesTables.AddCell(productNameCell);
+
+        //                            _detailXElements = childEllement.Elements(nameof(_royaltyFee.Details));
+        //                            double sstotal = 0;
+        //                            foreach (XElement detailXML in _detailXElements)
+        //                            {
+        //                                PdfPCell detailCell = new PdfPCell(
+        //                                    new Phrase((string)(detailXML.Element(nameof(_royaltyFee.IdCmp))),
+        //                                    normalFontTenBlack));
+        //                                detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                                detailCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+        //                                royaltiesTables.AddCell(detailCell);
+
+        //                                detailCell = new PdfPCell(
+        //                                    new Phrase((string)(detailXML.Element(nameof(_royaltyFee.Campagne))),
+        //                                    normalFontTenBlack));
+        //                                detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                                detailCell.HorizontalAlignment = Element.ALIGN_LEFT;
+        //                                royaltiesTables.AddCell(detailCell);
+
+        //                                detailCell = new PdfPCell(
+        //                                    new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateDebut))),
+        //                                    normalFontTenBlack));
+        //                                detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                                detailCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                                royaltiesTables.AddCell(detailCell);
+
+        //                                detailCell = new PdfPCell(
+        //                                    new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateFin))),
+        //                                    normalFontTenBlack));
+        //                                detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                                detailCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                                royaltiesTables.AddCell(detailCell);
+
+        //                                enseigne = (string)(detailXML.Element(nameof(_royaltyFee.Enseigne)));
+        //                                commune = (string)(detailXML.Element(nameof(_royaltyFee.Commune)));
+        //                                idPv = (string)(detailXML.Element(nameof(_royaltyFee.IdPv)));
+
+        //                                sstotal += double.Parse(detailXML.Element(nameof(_royaltyFee.MontantRdvcHT)).Value.Replace(".", ","));
+        //                            }
+
+        //                            // -- Set Sub Total Name --
+        //                            PdfPCell subTotalCell = new PdfPCell(new Phrase("Sous Total", boldFontTenBlack));
+        //                            subTotalCell.Colspan = 2;
+        //                            subTotalCell.PaddingRight = 10;
+        //                            subTotalCell.PaddingBottom = 5;
+        //                            subTotalCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+        //                            subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                            royaltiesTables.AddCell(subTotalCell);
+
+        //                            // -- Set Sub Total Value --
+        //                            countElementByDp = _detailXElements.Count();
+        //                            subTotalCell = new PdfPCell(new Phrase(countElementByDp.ToString(), boldFontTenBlack));
+        //                            subTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                            subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                            royaltiesTables.AddCell(subTotalCell);
+
+        //                            var ssTotalPhrase = new Phrase(sstotal.ToString(), boldFontTenBlack);
+        //                            PdfPCell cel = new PdfPCell(ssTotalPhrase);
+        //                            cel.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                            cel.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                            royaltiesTables.AddCell(cel);
+
+        //                            total += sstotal;
+        //                        }
+        //                    }
+
+        //                    string productType = typeproduit.Attribute("Nom").Value;
+
+        //                    // -- Set Total Name --
+        //                    totalHtArrondi = Math.Round(total, 2);
+        //                    Phrase productTypePhrase = new Phrase($"Total  { productType }", boldFontTenBlack);
+        //                    PdfPCell productTypeCell = new PdfPCell(productTypePhrase);
+        //                    productTypeCell.Colspan = 3;
+        //                    productTypeCell.PaddingRight = 10;
+        //                    productTypeCell.PaddingBottom = 5;
+        //                    productTypeCell.MinimumHeight = 15;
+        //                    productTypeCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+        //                    productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                    royaltiesTables.AddCell(productTypeCell);
+
+        //                    productTypePhrase = new Phrase(totalHtArrondi.ToString(), boldFontTenBlack);  //totalHtArrondi.ToString()
+        //                    productTypeCell = new PdfPCell(productTypePhrase);
+        //                    productTypeCell.PaddingRight = 10;
+        //                    productTypeCell.PaddingBottom = 5;
+        //                    productTypeCell.MinimumHeight = 15;
+        //                    productTypeCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                    productTypeCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                    productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                    royaltiesTables.AddCell(productTypeCell);
+        //                }
+
+        //                masterDocument.Add(royaltiesTables);
+
+        //                // -- Set spacing between gridView and  --
+        //                royaltiesTables.SpacingAfter = 5f;
+        //                #endregion
+        //                #endregion
+
+        //                #region -- Table Footer --                    
+        //                PdfPTable footerTable = new PdfPTable(4);
+        //                footerTable.WidthPercentage = widthPercentage;
+        //                footerTable.SetWidths(widths);
+
+        //                PdfPCell footerCell = new PdfPCell(new Phrase(idPv, boldFontTenBlack));
+        //                footerCell.Colspan = 0;
+        //                footerCell.MinimumHeight = 16;
+        //                footerCell.PaddingBottom = 5;
+        //                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                footerCell.HorizontalAlignment = Element.ALIGN_LEFT;
+        //                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                footerTable.AddCell(footerCell);
+
+        //                footerCell = new PdfPCell(new Phrase($"{ enseigne} - { commune }", boldFontTenBlack));
+        //                footerCell.Colspan = 0;
+        //                footerCell.PaddingBottom = 5;
+        //                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                footerCell.HorizontalAlignment = Element.ALIGN_LEFT;
+        //                footerTable.AddCell(footerCell);
+
+        //                footerCell = new PdfPCell(new Phrase($"Total  { _countPv.ToString() }", boldFontTenBlack));
+        //                footerCell.Colspan = 0;
+        //                footerCell.PaddingBottom = 5;
+        //                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                footerCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                footerTable.AddCell(footerCell);
+
+        //                footerCell = new PdfPCell(new Phrase($"{ _footerPage.TotalHT.ToString() }", boldFontTenBlack));
+        //                footerCell.Colspan = 0;
+        //                footerCell.PaddingBottom = 5;
+        //                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+        //                footerCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                footerTable.AddCell(footerCell);
+
+        //                masterDocument.Add(footerTable);
+        //                #endregion
+
+        //                //// -- Draw interemediate horizontal line. --
+        //                //var virtualLineSeparator = new LineSeparator(0.0F, 96.0F, BaseColor.BLUE, Element.ALIGN_CENTER, 1);
+        //                //Paragraph interemediateLineSeparator = new Paragraph(new Chunk(virtualLineSeparator));
+        //                //interemediateLineSeparator.SpacingBefore = 108f;
+        //                //masterDocument.Add(interemediateLineSeparator);
+
+        //                #region -- Total --
+        //                PdfPTable royalFeeTotalMasterTable = new PdfPTable(1);
+        //                royalFeeTotalMasterTable.TotalWidth = 400;
+        //                PdfPTable royalFeeTotalTable = new PdfPTable(4);
+
+        //                PdfPCell firstRoyalFeeTotalCell = new PdfPCell(new Phrase());
+        //                firstRoyalFeeTotalCell.BorderColor = BaseColor.WHITE;
+        //                firstRoyalFeeTotalCell.Border = 5;
+        //                royalFeeTotalTable.AddCell(firstRoyalFeeTotalCell);
+        //                PdfPCell royalFeeTotalCell = new PdfPCell(new Phrase("HT", boldFontNineBlack));
+        //                royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+        //                royalFeeTotalCell = new PdfPCell(new Phrase($"TVA {_footerPage.TxTva}", boldFontNineBlack));
+        //                royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+        //                royalFeeTotalCell = new PdfPCell(new Phrase("TTC", boldFontNineBlack));
+        //                royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+        //                royalFeeTotalCell = new PdfPCell(new Phrase("Total du relevé", boldFontNineBlack));
+        //                royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+        //                royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalHT }", boldFontNineBlack));  //total.ToString()
+        //                royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+        //                royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalTVA }", boldFontNineBlack));  //montantTva.ToString()
+        //                royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+        //                royalFeeTotalCell = new PdfPCell(new Phrase($"{ _footerPage.TotalTTC }", boldFontNineBlack));   //totalTTC.ToString()
+        //                royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+        //                royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //                royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+        //                PdfPCell royalFeeTotalMasterCell = new PdfPCell(royalFeeTotalTable);
+
+        //                royalFeeTotalMasterTable.AddCell(royalFeeTotalMasterCell);
+        //                royalFeeTotalMasterTable.WriteSelectedRows(0, -1, 22, 102, pdfContentByte);
+        //                #endregion
+
+        //                //// -- Add footer to the last page --
+        //                //OnEndPage(masterWriter, masterDocument, baseFont, _footerPage);
+
+        //                masterDocument.Close();
+        //                masterStream.Close();
+        //                masterWriter.Close();
+        //            }
+
+        //            // -- Manage pages number --
+        //            AddPageNumber(_fullPdfFilePath, _fullPdfFilePath);
+
+        //            result = true;
+
+        //            _logger.Debug($"==> Fin création du Pdf.");
+
+        //            stopwatch.Stop();
+        //            TimeSpan stopwatchElapsed = stopwatch.Elapsed;
+        //            Console.WriteLine("Temps mis pour la génération du PDF " + Convert.ToInt32(stopwatchElapsed.TotalMilliseconds));
+
+        //            //Process.Start(_fullPdfFilePath);
+        //        }
+        //    }
+        //    #region -- Catch - Finaly Bloc --
+        //    catch (DocumentException docExcexption)
+        //    {
+        //        result = false;
+        //        ErrorMessage = docExcexption.ToString();
+        //        _logger.Debug($" [{ ErrorMessage }]");
+        //    }
+        //    catch (IOException ioException)
+        //    {
+        //        result = false;
+        //        ErrorMessage = ioException.ToString();
+        //        _logger.Debug($" [{ ErrorMessage }]");
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        result = false;
+        //        ErrorMessage = exception.ToString();
+        //        _logger.Debug($" [{ ErrorMessage }]");
+        //    }
+        //    finally
+        //    {
+        //        List<string> wrongPathList = new List<string>();
+        //        wrongPathList.Clear();
+
+        //        if (!string.IsNullOrWhiteSpace(ErrorMessage))
+        //        {
+        //            result = false;
+        //            StringBuilder stringBuilder = new StringBuilder();
+
+        //            if (wrongPathList.Count > 0)
+        //            {
+        //                foreach (var item in wrongPathList)
+        //                {
+        //                    stringBuilder.Append($"{item} " + Environment.NewLine);
+        //                }
+        //            }
+
+        //            ErrorMessage = stringBuilder.Length > 0 ?
+        //                string.Format("ErrorMessageLabels.CheckFilesPathMsg", stringBuilder.ToString()) : ErrorMessage;
+
+        //            _dialogService.ShowMessage($"[{ErrorMessage}", "ERROR",
+        //                                      MessageBoxButton.OK,
+        //                                      MessageBoxImage.Error,
+        //                                      MessageBoxResult.Yes);
+        //        }
+        //    }
+        //    #endregion
+        //    return result;
+        //}
+
         #endregion
 
 
@@ -614,6 +1064,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
         }
         #endregion
 
+        #region MyRegion
 
         /// <summary>
         /// -- Lecture de la base de données ou du fichier à la recherche !!!!!!!!!!!!!!!!! --
@@ -621,7 +1072,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
         /// <returns></returns>
         //public async Task<bool> ManagefpPPV()
         public bool ManagefpPPV()
-        {           
+        {
             bool result = false;
 
             string currentTime = DateTime.Now.ToString("dd-MM-yyyy");
@@ -635,8 +1086,8 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                 #region -- Gestion par la base de données --
                 var bfpReportHistoricDataSet = GetBfpReportHistoricSync("SP_PvRedevanceHistorique_Select");
 
-                if ((bfpReportHistoricDataSet != null) && 
-                    (bfpReportHistoricDataSet.Tables.Count > 0) && 
+                if ((bfpReportHistoricDataSet != null) &&
+                    (bfpReportHistoricDataSet.Tables.Count > 0) &&
                     (bfpReportHistoricDataSet.Tables[0].Rows.Count > 0))
                 {
                     #region -- With Multi threading --
@@ -905,7 +1356,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                 {
                     ErrorMessage = $"Aucune redevace non envoyée n'a été trouvée.";
                     _logger.Debug($" [{ ErrorMessage }]");
-                }       
+                }
                 #endregion
 
                 #region -- Gestion par récûpération du fichier de fichier TEXT --
@@ -1020,7 +1471,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
                 ErrorMessage = directoryNotFoundException.ToString();
                 _logger.Debug($" [{ ErrorMessage }]");
             }
-            catch(IOException iOException)
+            catch (IOException iOException)
             {
                 ErrorMessage = iOException.Message.ToString();
                 _logger.Debug($" [{ ErrorMessage }]");
@@ -1076,12 +1527,14 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
             #endregion
         }
 
+        #endregion
+
         /// <summary>
         /// 
         /// </summary>
         private void Do()
         {
-            Process();
+            ProcessV0();
         }
 
         /// <summary>
@@ -1090,7 +1543,7 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
         /// <param name="bfpReportHistoricDataSet"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        private bool Process()
+        private bool ProcessV0()
         {
             bool result = false;
 
@@ -1287,6 +1740,476 @@ namespace MediaPerf.ManagerPdf.Repository.Implementations
 
             return result;
         }
+
+        #region -- *********************************************************************** --
+
+        #region -------------------------------------------
+        public bool CreateRoyaltyFeePdfFile(
+             XDocument xDocument)
+        {
+            //_logger.Debug($"==> Début création du fichier Pdf");
+
+            #region MyRegion
+
+            string ErrorMessage = null;
+            int _countPv = 0;
+            #endregion
+
+
+            #region -- Fields --
+            bool result = false;
+
+            double total = 0;
+            double totalHT = 0;
+            int countElementByDp = 0;
+            int countElementByProduct = 0;
+            double totalTTC = 0;
+            double montantTva = 0;
+            double totalHtArrondi = 0;
+            string idPv = null;
+            string dpName = null;
+            string communeName = null;
+            string enseigneName = null;
+            string productName = null;
+            IEnumerable<XElement> _detailXElements = null;
+            #endregion
+
+            #region --   --
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            //PdfWriter masterWriter = null;
+            DateTime fileCreationDatetime = DateTime.Now;
+
+            var widthPercentage = 96;
+
+            string extension = ".pdf";
+            string date = fileCreationDatetime.ToString(@"ddMMyyyy");
+            string fileName = $"_{date}{extension}";
+
+            string pdfPath = @"C:\Users\Sweet Family\Desktop\PdfFilesPath\TestPDF";
+
+
+            //_logger.Debug($"==> Génération du chemin du fichier");
+            string _fullPdfFilePath = string.Concat(pdfPath, "PDF_TEST", extension);
+
+            if (File.Exists(_fullPdfFilePath))
+            {
+                File.Delete(_fullPdfFilePath);
+            }
+            #endregion
+
+            try
+            {
+                // -- Define royalTies columns widths --
+                float[] widths = new float[] { 10f, 60f, 20f, 20f };
+
+                string xmlPath = @"C:\Users\Sweet Family\source\repos\MediaPerf.ManagerBfpPdfReport\MediaPerf.ManagerPdf.Repository\Product.xml";
+
+                xDocument = XDocument.Load(xmlPath);
+
+                if (xDocument != null && xDocument.Descendants("TypeProduit").Elements("Produit").Count() > 0)
+                {
+                    // -- Retrieve count Pv --
+                    _countPv = xDocument.Descendants("TypeProduit").Elements("Produit").Elements("Dp").Elements("Details").Count();
+
+
+                    var de = xDocument.Descendants("TypeProduit").Elements("Produit").Count();
+
+                    // -- MMA All Using has changed --
+                    using (var masterStream = new FileStream(_fullPdfFilePath, FileMode.Create))
+                    using (Document masterDocument = new Document(PageSize.A4, 10f, 10f, 340f, 120f))   //(PageSize.A4, 5, 12, 20, 10)  //new Document(PageSize.A4, 10f, 10f, 350f, 150f))  PageSize.A4, 10f, 10f, 368f, 100f)
+                    using (PdfWriter masterWriter = PdfWriter.GetInstance(masterDocument, masterStream))
+                    {
+                        #region -- Setting Document properties e.g. --
+                        masterDocument.AddTitle("Envoi des relevés de redevance par mail");
+                        masterDocument.AddSubject("Génération de relevés de redevance en PDF pour envoi par mail");
+                        masterDocument.AddKeywords("Metadata, iTextSharp 5.4.13.1");
+                        masterDocument.AddCreator("MMA");
+                        masterDocument.AddAuthor("M MABOU");
+                        masterDocument.AddHeader("Some thing", "Header");
+                        #endregion
+
+                        ErrorMessage = null;
+
+                        //// -- Add Event in all pages --
+                        //masterWriter.PageEvent = new ITextEvents(_headerPage, _footerPage, _countPv);
+
+                        masterDocument.Open();
+
+                        PdfContentByte pdfContentByte = masterWriter.DirectContent;
+                        var lineSeparator = new LineSeparator(2.0F, 96.0F, BaseColor.RED, Element.ALIGN_CENTER, 1);
+
+                        #region -- Define fonts --
+                        BaseFont baseFont = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, false);
+                        var noneFontOneWhite = new Font(baseFont, 1, Font.NORMAL, BaseColor.WHITE);
+                        var normalFontEightBlack = new Font(baseFont, 8, Font.NORMAL, BaseColor.BLACK);
+                        var boldFontEightBlack = new Font(baseFont, 8, Font.BOLD, BaseColor.BLACK);
+                        var boldFontNineBlack = new Font(baseFont, 9, Font.BOLD, BaseColor.BLACK);
+                        var normalFontNimeBlack = new Font(baseFont, 9, Font.NORMAL, BaseColor.BLACK);
+                        var boldFontTenBlack = new Font(baseFont, 10, Font.BOLD, BaseColor.BLACK);
+                        var normalFontTenBlack = new Font(baseFont, 10, Font.NORMAL, BaseColor.BLACK);
+                        var boldFontEleventBlack = new Font(baseFont, 11, Font.BOLD, BaseColor.BLACK);
+                        var normalFontEleventBlack = new Font(baseFont, 11, Font.NORMAL, BaseColor.BLACK);
+                        var boldFontTwelveBlack = new Font(baseFont, 12, Font.BOLD, BaseColor.BLACK);
+                        var normalFontTwelveBlack = new Font(baseFont, 12, Font.NORMAL, BaseColor.BLACK);
+                        #endregion
+
+                        #region -- Generate XML Grid --
+                        PdfPTable royaltiesTables = new PdfPTable(4);
+
+                        royaltiesTables.WidthPercentage = 96;
+
+                        // -- Add Header row for every page --
+                        royaltiesTables.HeaderRows = 1;
+
+                        // -- Set spacing between gridView and  --
+                        royaltiesTables.SpacingBefore = 5f;
+
+                        // --   --
+                        royaltiesTables.SetWidths(widths);
+
+                        #region -- Table Header --
+                        PdfPCell headerCell = new PdfPCell(new Phrase("No", boldFontTenBlack));
+                        headerCell.Colspan = 0;
+                        headerCell.MinimumHeight = 18;
+                        headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                        headerCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royaltiesTables.AddCell(headerCell);
+
+                        headerCell = new PdfPCell(new Phrase("Campagne", boldFontTenBlack));
+                        headerCell.Colspan = 0;
+                        headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                        headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        headerCell.HorizontalAlignment = 0;
+                        royaltiesTables.AddCell(headerCell);
+
+                        headerCell = new PdfPCell(new Phrase("Du", boldFontTenBlack));
+                        headerCell.Colspan = 0;
+                        headerCell.HorizontalAlignment = 1;
+                        headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                        headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royaltiesTables.AddCell(headerCell);
+
+                        headerCell = new PdfPCell(new Phrase("Au", boldFontTenBlack));
+                        headerCell.Colspan = 0;
+                        headerCell.HorizontalAlignment = 1;
+                        headerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                        headerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royaltiesTables.AddCell(headerCell);
+                        #endregion
+
+
+                        var totalDetails0 = xDocument.Descendants(nameof(_royaltyFee.Commune))
+                                                    .Descendants(nameof(_royaltyFee.TypeProduit))
+                                                    .Descendants(nameof(_royaltyFee.Produit))
+                                                    .Descendants(nameof(_royaltyFee.Dp))
+                                                    .Elements(nameof(_royaltyFee.Details))
+                                                    .Count();
+
+                        var totalTypeProduit0 = xDocument.Descendants(nameof(_royaltyFee.Commune))
+                                                        .Descendants(nameof(_royaltyFee.TypeProduit))
+                                                        .Count();
+
+                        var totalTypeProduit10 = xDocument.Descendants(nameof(_royaltyFee.Commune))
+                                                        .Elements(nameof(_royaltyFee.TypeProduit))
+                                                        .Count();
+                        
+                        var totalProduit0 = xDocument.Descendants(nameof(_royaltyFee.Commune))
+                                                       .Descendants(nameof(_royaltyFee.TypeProduit))
+                                                       .Elements(nameof(_royaltyFee.Produit))
+                                                       .Count();
+
+                        #region -- Generate pdf group grid --
+                        foreach (XElement communeXElement in xDocument.Descendants(nameof(_royaltyFee.Commune)))
+                        {
+                            var _communesElement = communeXElement.Elements(nameof(_royaltyFee.TypeProduit));
+                            int countElementByProductType = countElementByDp;
+                            countElementByDp = 0;
+                                                        
+                            foreach (XElement typeproduit in _communesElement)
+                            {
+                                var _produitsXElement = typeproduit.Elements(nameof(_royaltyFee.Produit));
+                                countElementByProductType = countElementByDp;
+                                double tempTotal = total;
+                                total = 0;
+
+                                foreach (XElement element in _produitsXElement)
+                                {
+                                    productName = element.FirstAttribute?.Value;
+
+                                    var _dpsXElement = element.Elements(nameof(_royaltyFee.Dp));
+
+                                    foreach (XElement childEllement in _dpsXElement)
+                                    {
+                                        int tmpCount = 0;
+                                        countElementByProduct = countElementByDp;
+                                        countElementByDp = 0;
+
+                                        dpName = childEllement.Attribute("Nom").Value;
+                                        PdfPCell productNameCell = new PdfPCell(new Phrase($"{ productName }\n   { dpName }", boldFontNineBlack));
+                                        productNameCell.Colspan = 4;
+                                        productNameCell.MinimumHeight = 23;
+                                        productNameCell.Padding = 3;
+                                        productNameCell.HorizontalAlignment = 0;
+                                        royaltiesTables.AddCell(productNameCell);
+
+                                        _detailXElements = childEllement.Elements(nameof(_royaltyFee.Details));
+                                        double sstotal = 0;
+                                        foreach (XElement detailXML in _detailXElements)
+                                        {
+                                            PdfPCell detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.IdCmp))),
+                                                normalFontNimeBlack));
+                                            detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                            detailCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                                            royaltiesTables.AddCell(detailCell);
+
+                                            detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.Campagne))),
+                                                normalFontNimeBlack));
+                                            detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                            detailCell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                            royaltiesTables.AddCell(detailCell);
+
+                                            detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateDebut))),
+                                                normalFontNimeBlack));
+                                            detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                            detailCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                            royaltiesTables.AddCell(detailCell);
+
+                                            detailCell = new PdfPCell(
+                                                new Phrase((string)(detailXML.Element(nameof(_royaltyFee.DateFin))),
+                                                normalFontNimeBlack));
+                                            detailCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                            detailCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                            royaltiesTables.AddCell(detailCell);
+
+                                            enseigneName = (string)(detailXML.Element(nameof(_royaltyFee.Enseigne)));
+                                            communeName = (string)(detailXML.Element(nameof(_royaltyFee.Commune)));
+                                            idPv = (string)(detailXML.Element(nameof(_royaltyFee.IdPv)));
+
+                                            sstotal += double.Parse(detailXML.Element(nameof(_royaltyFee.MontantRdvcHT)).Value.Replace(".", ","));
+                                        }
+
+                                        // -- Set Sub Total Name --
+                                        PdfPCell subTotalCell = new PdfPCell(new Phrase("Sous Total", boldFontNineBlack));
+                                        subTotalCell.Colspan = 2;
+                                        subTotalCell.PaddingRight = 10;
+                                        subTotalCell.PaddingBottom = 5;
+                                        subTotalCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                                        subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        royaltiesTables.AddCell(subTotalCell);
+
+                                        // -- Set Sub Total Value --
+                                        countElementByDp = _detailXElements.Count();
+                                        countElementByProduct = countElementByProduct + countElementByDp;
+                                        subTotalCell = new PdfPCell(new Phrase(countElementByDp.ToString(), boldFontNineBlack));
+                                        subTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                        subTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        royaltiesTables.AddCell(subTotalCell);
+
+                                        sstotal = Math.Round(sstotal, 2);
+                                        var ssTotalPhrase = new Phrase(sstotal.ToString(), boldFontNineBlack);
+                                        PdfPCell cel = new PdfPCell(ssTotalPhrase);
+                                        cel.HorizontalAlignment = Element.ALIGN_CENTER;
+                                        cel.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                        royaltiesTables.AddCell(cel);
+
+                                        total += sstotal;
+                                    }
+                                }
+
+                                string productType = typeproduit.Attribute("Nom").Value;
+
+                                totalHT = tempTotal + total;
+                                //countElementByProduct = countElementByProductType + countElementByDp;
+                                countElementByProduct += countElementByProduct;
+
+                                // -- Set Total Name --
+                                #region -- Manage Total by product type --
+                                totalHtArrondi = Math.Round(totalHT, 2);
+                                Phrase productTypePhrase = new Phrase($"Total  { productType }", boldFontNineBlack);
+                                PdfPCell productTypeCell = new PdfPCell(productTypePhrase);
+                                productTypeCell.Colspan = 3;
+                                productTypeCell.PaddingRight = 10;
+                                productTypeCell.PaddingBottom = 5;
+                                productTypeCell.MinimumHeight = 15;
+                                productTypeCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                                productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(productTypeCell);
+
+                                double t = Math.Round(total, 2);
+                                productTypePhrase = new Phrase(t.ToString(), boldFontNineBlack);  //totalHtArrondi.ToString()
+                                productTypeCell = new PdfPCell(productTypePhrase);
+                                productTypeCell.PaddingRight = 10;
+                                productTypeCell.PaddingBottom = 5;
+                                productTypeCell.MinimumHeight = 15;
+                                productTypeCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                                productTypeCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                productTypeCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(productTypeCell);
+                                #endregion
+                            }
+                                                     
+
+                            var totalDetails = communeXElement
+                                                        .Descendants(nameof(_royaltyFee.TypeProduit))
+                                                        .Descendants(nameof(_royaltyFee.Produit))
+                                                        .Descendants(nameof(_royaltyFee.Dp))
+                                                        .Elements(nameof(_royaltyFee.Details))
+                                                        .Count();
+
+                            var totalTypeProduit = xDocument.Descendants(nameof(_royaltyFee.Commune))
+                                                            .Descendants(nameof(_royaltyFee.TypeProduit))
+                                                            .Count();
+
+                            var totalProduit = xDocument.Descendants(nameof(_royaltyFee.Commune))
+                                                           .Descendants(nameof(_royaltyFee.TypeProduit))
+                                                           .Elements(nameof(_royaltyFee.Produit))
+                                                           .Count();
+
+
+
+                            // -- Set Sub table data --
+                            if (countElementByDp > 0)
+                            {
+                                PdfPCell footerCell = new PdfPCell(
+                                    new Phrase($" { idPv } - { enseigneName }  -  { communeName }", boldFontNineBlack));
+                                footerCell.Colspan = 2;
+                                footerCell.PaddingRight = 10;
+                                footerCell.PaddingBottom = 5;
+                                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                                footerCell.HorizontalAlignment = Element.ALIGN_LEFT;
+                                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(footerCell);
+
+                                footerCell = new PdfPCell(
+                                    new Phrase($"Total    { totalDetails }         { totalHT.ToString() }", boldFontNineBlack));
+                                footerCell.Colspan = 2;
+                                footerCell.PaddingRight = 10;
+                                footerCell.PaddingBottom = 5;
+                                footerCell.BackgroundColor = BaseColor.LIGHT_GRAY;
+                                footerCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                footerCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                royaltiesTables.AddCell(footerCell);
+                            }
+                        }
+
+                        masterDocument.Add(royaltiesTables);
+
+                        // -- Set spacing between gridView and  --
+                        royaltiesTables.SpacingAfter = 5f;
+                        #endregion
+                        #endregion
+
+
+                        #region -- Total --
+                        PdfPTable royalFeeTotalMasterTable = new PdfPTable(1);
+                        royalFeeTotalMasterTable.TotalWidth = 400;
+                        PdfPTable royalFeeTotalTable = new PdfPTable(4);
+
+                        PdfPCell firstRoyalFeeTotalCell = new PdfPCell(new Phrase());
+                        firstRoyalFeeTotalCell.BorderColor = BaseColor.WHITE;
+                        firstRoyalFeeTotalCell.Border = 5;
+                        royalFeeTotalTable.AddCell(firstRoyalFeeTotalCell);
+                        PdfPCell royalFeeTotalCell = new PdfPCell(new Phrase("HT", boldFontNineBlack));
+                        royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+                        string tva = "20,00";
+                        royalFeeTotalCell = new PdfPCell(new Phrase($"TVA _footerPage.TxTva", boldFontNineBlack));
+                        royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+                        royalFeeTotalCell = new PdfPCell(new Phrase("TTC", boldFontNineBlack));
+                        royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+                        royalFeeTotalCell = new PdfPCell(new Phrase("Total du relevé", boldFontNineBlack));
+                        royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+                        var tHt = total.ToString();
+                        royalFeeTotalCell = new PdfPCell(new Phrase($" _footerPage.TotalHT '", boldFontNineBlack));  //_footerPage.TotalHT //totalHtArrondi.ToString()
+                        royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+                        //montantTva = totalHtArrondi * _footerPage.TxTva / 100;
+                        royalFeeTotalCell = new PdfPCell(new Phrase($" _footerPage.TotalTVA ", boldFontNineBlack));  //_footerPage.TotalTVA //montantTva
+                        royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+                        totalTTC = montantTva + totalHtArrondi;
+                        royalFeeTotalCell = new PdfPCell(new Phrase($" _footerPage.TotalTTC ", boldFontNineBlack));  //_footerPage.TotalTTC  //totalTTC
+                        royalFeeTotalCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        royalFeeTotalCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        royalFeeTotalTable.AddCell(royalFeeTotalCell);
+
+                        PdfPCell royalFeeTotalMasterCell = new PdfPCell(royalFeeTotalTable);
+
+                        royalFeeTotalMasterTable.AddCell(royalFeeTotalMasterCell);
+                        royalFeeTotalMasterTable.WriteSelectedRows(0, -1, 22, 102, pdfContentByte);
+                        #endregion
+
+                        masterDocument.Close();
+                        masterStream.Close();
+                        masterWriter.Close();
+                    }
+                    #endregion
+
+                    // -- Manage pages number --
+                    //AddPageNumber(_fullPdfFilePath, _fullPdfFilePath);
+
+                    result = true;
+
+                    //_logger.Debug($"==> Fin création du Pdf.");
+
+                    stopwatch.Stop();
+                    TimeSpan stopwatchElapsed = stopwatch.Elapsed;
+                    Console.WriteLine("Temps mis pour la génération du PDF " + Convert.ToInt32(stopwatchElapsed.TotalMilliseconds));
+
+                    Process.Start(_fullPdfFilePath);
+                }
+            }
+            #region -- Catch - Finaly Bloc --
+            catch (DocumentException docExcexption)
+            {
+                result = false;
+                //ErrorMessage = docExcexption.ToString();
+                //_logger.Debug($" [{ ErrorMessage }]");
+            }
+            catch (IOException ioException)
+            {
+                result = false;
+                //ErrorMessage = ioException.ToString();
+                //_logger.Debug($" [{ ErrorMessage }]");
+            }
+            catch (Exception exception)
+            {
+                result = false;
+                //ErrorMessage = exception.ToString();
+                //_logger.Debug($" [{ ErrorMessage }]");
+            }
+            finally
+            {
+                List<string> wrongPathList = new List<string>();
+                wrongPathList.Clear();
+
+            }
+            #endregion
+            return result;
+        }
+
+        #endregion
 
         #region -- Get Pdf template DataSet --
         /// <summary>

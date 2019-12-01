@@ -1,0 +1,1714 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<produits>
+  <Commune>
+    <Commune>FERNEY-VOLTAIRE</Commune>
+    <TypeProduit Nom="Affi">
+      <Produit Nom="Actmédia">
+        <Dp Nom="Standard">
+          <Details>
+            <IdCmp>10838</IdCmp>
+            <Campagne>AC MADELEINE CITRON BONNE MAMAN</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10751</IdCmp>
+            <Campagne>AM FRUIT D OR MARGARINE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10939</IdCmp>
+            <Campagne>AC COCA 100 ANS</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11119</IdCmp>
+            <Campagne>AC OASIS SIROPS</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11075</IdCmp>
+            <Campagne>AC YAOURT DANONE OIKOS</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+        </Dp>
+      </Produit>
+      <Produit Nom="Affievent">
+        <Dp Nom="Standard">
+          <Details>
+            <IdCmp>10458</IdCmp>
+            <Campagne>AE VIANDE CHARAL</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>18/03/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10482</IdCmp>
+            <Campagne>AE COLGATE DENTIFRICE</Campagne>
+            <DateDebut>18/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10752</IdCmp>
+            <Campagne>AE STEAK BURGER BURGER ET ABSOLU</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>15/04/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10708</IdCmp>
+            <Campagne>AE BARRE YES</Campagne>
+            <DateDebut>15/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10666</IdCmp>
+            <Campagne>AFFIEVENT LU LES PETITS EPIS</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>13/05/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11102</IdCmp>
+            <Campagne>AE VIANDE PLEIN GRILL ET SAUCISSE (BBQ ET PLANCHA)</Campagne>
+            <DateDebut>11/06/2019</DateDebut>
+            <DateFin>25/06/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+        </Dp>
+      </Produit>
+    </TypeProduit>
+    <TypeProduit Nom="Acti">
+      <Produit Nom="Actishelf">
+        <Dp Nom="Standard">
+          <Details>
+            <IdCmp>10439</IdCmp>
+            <Campagne>AS CONSERVES PLATS GARBIT SAVEURS DE LA BAS</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>11/02/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10456</IdCmp>
+            <Campagne>ACTISHELF PANZANI PÂTES SELEZIONE AL BRONZO</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10449</IdCmp>
+            <Campagne>AS MAGGI PUREE D'AROMATES</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10438</IdCmp>
+            <Campagne>AS LA TISANIÈRE BIO</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10454</IdCmp>
+            <Campagne>ACTISHELF SOINS CORPS NEUTROGENA</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10509</IdCmp>
+            <Campagne>ACTISHELF CARTE NOIRE DOLCE GUSTO DOSETTE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10507</IdCmp>
+            <Campagne>AS CARTE NOIRE SOLUBLE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10499</IdCmp>
+            <Campagne>AS PURINA ONE HUMIDE PORTION</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>11/02/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10505</IdCmp>
+            <Campagne>AS ANDROS CONFITURE BIO</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10451</IdCmp>
+            <Campagne>AS HARIBO PIK PAILLES</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10502</IdCmp>
+            <Campagne>ACTISHELF LACTEL EVEIL REDUIT EN LACTOSE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10537</IdCmp>
+            <Campagne>AS BAIN DE BOUCHE LISTÉRINE</Campagne>
+            <DateDebut>11/02/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10555</IdCmp>
+            <Campagne>AS BLAISSAC VIN</Campagne>
+            <DateDebut>11/02/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10528</IdCmp>
+            <Campagne>AS NIVÉA VITAL CREME VISAGE</Campagne>
+            <DateDebut>11/02/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10569</IdCmp>
+            <Campagne>AS KIDIFRUITS</Campagne>
+            <DateDebut>11/02/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10641</IdCmp>
+            <Campagne>AS COTE D'OR BIO </Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10647</IdCmp>
+            <Campagne>AS PANZANI SELEZIONE AL BRONZO</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10614</IdCmp>
+            <Campagne>AS BARNANGEN SOIN DOUCHE ET CORPS</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10624</IdCmp>
+            <Campagne>ACTISHELF MATERNE COMPOTE RAYON AMBIANT</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10637</IdCmp>
+            <Campagne>ACTISHELF POM'POTES BIO RAYON AMBIANT</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10669</IdCmp>
+            <Campagne>AS HARIBO MAOAM</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10746</IdCmp>
+            <Campagne>AS LIPTON GREEN + LIPTON 1L BOISSON </Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10715</IdCmp>
+            <Campagne>AS FROMAGE MERZER</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10654</IdCmp>
+            <Campagne>ACTISHELF RICHESMONTS FROMAGE À RACLETTE SPECIAL BURGER ET CROQUE</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10793</IdCmp>
+            <Campagne>AS HARIBO FAN OF PIK</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10755</IdCmp>
+            <Campagne>AS SPRITE</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10792</IdCmp>
+            <Campagne>AS DR BECKMANN LINGETTES ANTI DECOLORATION</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10796</IdCmp>
+            <Campagne>AS BRIOCHE TRESSÉE ET TRANCHÉE</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10866</IdCmp>
+            <Campagne>AS FERRERO COUSCOUS</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10854</IdCmp>
+            <Campagne>AS NIVÉA VITAL</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10892</IdCmp>
+            <Campagne>AS BIOREPAIR</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10851</IdCmp>
+            <Campagne>AS NAKED SMOOTHIE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10767</IdCmp>
+            <Campagne>ACTISHELF BUD BIERE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10836</IdCmp>
+            <Campagne>AS CHOCOLATS MAL CASSE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10797</IdCmp>
+            <Campagne>AS LU LES PETITS ÉPIS</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10874</IdCmp>
+            <Campagne>AS CAFE GRAND MERE CAPSULE ALUMINIUM</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10798</IdCmp>
+            <Campagne>AS BELVITA</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10916</IdCmp>
+            <Campagne>AS PURINA ONE CHIEN MINI MAXI</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11018</IdCmp>
+            <Campagne>AS RECOLTES BIO BLEDINA</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11053</IdCmp>
+            <Campagne>AS LAYS CUITES AU FOUR CHIPS</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11005</IdCmp>
+            <Campagne>ACTISHELF LA BOULANGERE L'ATELIER PAIN DE MIE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10927</IdCmp>
+            <Campagne>AS FESS'NETT</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10731</IdCmp>
+            <Campagne>ACTISHELF PRINGLES RICE FUSION</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10987</IdCmp>
+            <Campagne>AS HONEST</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10775</IdCmp>
+            <Campagne>AS BRIOCHES HARRYS DOO WAP</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10619</IdCmp>
+            <Campagne>AS PATE A TARTE CROUSTIPATE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10876</IdCmp>
+            <Campagne>AS NANA PROTEGE LINGERIE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10971</IdCmp>
+            <Campagne>AS YES BARRES CEREALS CHOCO </Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11014</IdCmp>
+            <Campagne>AS MAYONNAISES LESIEUR</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11185</IdCmp>
+            <Campagne>AS NESTLE DESSERT PEPITES</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10862</IdCmp>
+            <Campagne>ACTISHELF PANIER DE YOPLAIT VEGETAL ET BIO</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>22.86</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11128</IdCmp>
+            <Campagne>ACTISHELF PETIT FILOU ET GO YAOURT A BOIRE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11136</IdCmp>
+            <Campagne>AS GRANY</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11055</IdCmp>
+            <Campagne>AS DAUNAT SALADE SNACK</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10929</IdCmp>
+            <Campagne>AS PELFORTH BIERE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11141</IdCmp>
+            <Campagne>AS PLATS BEBE BLEDINA IDEES DE MAMAN</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11196</IdCmp>
+            <Campagne>AS TASSIMO CARTE NOIRE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11069</IdCmp>
+            <Campagne>AS PURE LEAF BOISSON THE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10993</IdCmp>
+            <Campagne>AS NETTOYANTS MACHINES DR.BECKMANN</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+        </Dp>
+      </Produit>
+      <Produit Nom="Visishelf">
+        <Dp Nom="By Actishelf">
+          <Details>
+            <IdCmp>10510</IdCmp>
+            <Campagne>VS SLIM CELIA NUTRITION INFANTILE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10771</IdCmp>
+            <Campagne>VS PEPSI MAX</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10784</IdCmp>
+            <Campagne>VS THERMOFORME JOKER LE FRUIT ORANGE ET MULTIFRUIT</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10985</IdCmp>
+            <Campagne>VS COCA 100 ANS</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10995</IdCmp>
+            <Campagne>VS SLIM YAOS YAOURT A LA GRECQUE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+        </Dp>
+        <Dp Nom="Kakémono By Actishelf ">
+          <Details>
+            <IdCmp>10516</IdCmp>
+            <Campagne>VS BLEDINA ALIMENTS BEBE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10448</IdCmp>
+            <Campagne>VS BAIN DE BOUCHE LISTERINE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>11/02/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10663</IdCmp>
+            <Campagne>VS NESCAFE SPECIAL FILTRE</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10685</IdCmp>
+            <Campagne>VS COCA COLA SANS SUCRE</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10684</IdCmp>
+            <Campagne>VS TEMPS FORT PAIN DE MIE HARRYS</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10611</IdCmp>
+            <Campagne>VS VIVIEN PAILLE GAMME LÉGUMES ET FÉCULENTS BIO</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10657</IdCmp>
+            <Campagne>VS DANONE DANETTE</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10646</IdCmp>
+            <Campagne>VS KAKEMONO MARONSUI'S</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10713</IdCmp>
+            <Campagne>VS BN JEU CONCOURS</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10743</IdCmp>
+            <Campagne>VS JACK DANIEL'S FIRE</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10912</IdCmp>
+            <Campagne>VS YAOURTS ACTIVIA</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10879</IdCmp>
+            <Campagne>VS TENA SILHOUETTE PROTECTION SOUS VÊTEMENTS</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10725</IdCmp>
+            <Campagne>VS NESCAFE NSF</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10992</IdCmp>
+            <Campagne>VS LOTUS BABY COUCHES BEBE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10827</IdCmp>
+            <Campagne>VS ORANGINA SCHWEPPES AGRUM</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11002</IdCmp>
+            <Campagne>VS KAKEMONO O'VERGER OASIS L'EAU FRUITEE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11175</IdCmp>
+            <Campagne>VS VODKA ABSOLUT EXTRAKT</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11197</IdCmp>
+            <Campagne>VS KAKEMONO BACARDI ANEJO CUATRO</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11124</IdCmp>
+            <Campagne>VS FUZE TEA</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>FERNEY-VOLTAIRE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+        </Dp>
+      </Produit>
+    </TypeProduit>    
+  </Commune>
+  <Commune>
+    <Commune>ASNIRES-SUR-SEINE</Commune>
+    <TypeProduit Nom="Affi">
+      <Produit Nom="Actmédia">
+        <Dp Nom="Standard">
+          <Details>
+            <IdCmp>10838</IdCmp>
+            <Campagne>AC MADELEINE CITRON BONNE MAMAN</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10751</IdCmp>
+            <Campagne>AM FRUIT D OR MARGARINE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10939</IdCmp>
+            <Campagne>AC COCA 100 ANS</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11119</IdCmp>
+            <Campagne>AC OASIS SIROPS</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11075</IdCmp>
+            <Campagne>AC YAOURT DANONE OIKOS</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>109.06</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actmédia</Produit>
+          </Details>
+        </Dp>
+      </Produit>
+      <Produit Nom="Affievent">
+        <Dp Nom="Standard">
+          <Details>
+            <IdCmp>10458</IdCmp>
+            <Campagne>AE VIANDE CHARAL</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>18/03/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10482</IdCmp>
+            <Campagne>AE COLGATE DENTIFRICE</Campagne>
+            <DateDebut>18/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10752</IdCmp>
+            <Campagne>AE STEAK BURGER BURGER ET ABSOLU</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>15/04/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10708</IdCmp>
+            <Campagne>AE BARRE YES</Campagne>
+            <DateDebut>15/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10666</IdCmp>
+            <Campagne>AFFIEVENT LU LES PETITS EPIS</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>13/05/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11102</IdCmp>
+            <Campagne>AE VIANDE PLEIN GRILL ET SAUCISSE (BBQ ET PLANCHA)</Campagne>
+            <DateDebut>11/06/2019</DateDebut>
+            <DateFin>25/06/2019</DateFin>
+            <MontantRdvcHT>57.15</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Affievent</Produit>
+          </Details>
+        </Dp>
+      </Produit>
+    </TypeProduit>
+    <TypeProduit Nom="Acti">
+      <Produit Nom="Actishelf">
+        <Dp Nom="Standard">
+          <Details>
+            <IdCmp>10439</IdCmp>
+            <Campagne>AS CONSERVES PLATS GARBIT SAVEURS DE LA BAS</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>11/02/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>          
+          <Details>
+            <IdCmp>10499</IdCmp>
+            <Campagne>AS PURINA ONE HUMIDE PORTION</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>11/02/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10505</IdCmp>
+            <Campagne>AS ANDROS CONFITURE BIO</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10451</IdCmp>
+            <Campagne>AS HARIBO PIK PAILLES</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10502</IdCmp>
+            <Campagne>ACTISHELF LACTEL EVEIL REDUIT EN LACTOSE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10537</IdCmp>
+            <Campagne>AS BAIN DE BOUCHE LISTÉRINE</Campagne>
+            <DateDebut>11/02/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>         
+          <Details>
+            <IdCmp>10647</IdCmp>
+            <Campagne>AS PANZANI SELEZIONE AL BRONZO</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10614</IdCmp>
+            <Campagne>AS BARNANGEN SOIN DOUCHE ET CORPS</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10624</IdCmp>
+            <Campagne>ACTISHELF MATERNE COMPOTE RAYON AMBIANT</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10637</IdCmp>
+            <Campagne>ACTISHELF POM'POTES BIO RAYON AMBIANT</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>         
+          <Details>
+            <IdCmp>10796</IdCmp>
+            <Campagne>AS BRIOCHE TRESSÉE ET TRANCHÉE</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10866</IdCmp>
+            <Campagne>AS FERRERO COUSCOUS</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10854</IdCmp>
+            <Campagne>AS NIVÉA VITAL</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10892</IdCmp>
+            <Campagne>AS BIOREPAIR</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10851</IdCmp>
+            <Campagne>AS NAKED SMOOTHIE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10767</IdCmp>
+            <Campagne>ACTISHELF BUD BIERE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10836</IdCmp>
+            <Campagne>AS CHOCOLATS MAL CASSE</Campagne>
+            <DateDebut>29/04/2019</DateDebut>
+            <DateFin>27/05/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>          
+          <Details>
+            <IdCmp>11005</IdCmp>
+            <Campagne>ACTISHELF LA BOULANGERE L'ATELIER PAIN DE MIE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10927</IdCmp>
+            <Campagne>AS FESS'NETT</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10731</IdCmp>
+            <Campagne>ACTISHELF PRINGLES RICE FUSION</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10987</IdCmp>
+            <Campagne>AS HONEST</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10775</IdCmp>
+            <Campagne>AS BRIOCHES HARRYS DOO WAP</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10619</IdCmp>
+            <Campagne>AS PATE A TARTE CROUSTIPATE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10876</IdCmp>
+            <Campagne>AS NANA PROTEGE LINGERIE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10971</IdCmp>
+            <Campagne>AS YES BARRES CEREALS CHOCO </Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11014</IdCmp>
+            <Campagne>AS MAYONNAISES LESIEUR</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11185</IdCmp>
+            <Campagne>AS NESTLE DESSERT PEPITES</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10862</IdCmp>
+            <Campagne>ACTISHELF PANIER DE YOPLAIT VEGETAL ET BIO</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>22.86</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11128</IdCmp>
+            <Campagne>ACTISHELF PETIT FILOU ET GO YAOURT A BOIRE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11136</IdCmp>
+            <Campagne>AS GRANY</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11055</IdCmp>
+            <Campagne>AS DAUNAT SALADE SNACK</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10929</IdCmp>
+            <Campagne>AS PELFORTH BIERE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11141</IdCmp>
+            <Campagne>AS PLATS BEBE BLEDINA IDEES DE MAMAN</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11196</IdCmp>
+            <Campagne>AS TASSIMO CARTE NOIRE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11069</IdCmp>
+            <Campagne>AS PURE LEAF BOISSON THE</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10993</IdCmp>
+            <Campagne>AS NETTOYANTS MACHINES DR.BECKMANN</Campagne>
+            <DateDebut>24/06/2019</DateDebut>
+            <DateFin>22/07/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Actishelf</Produit>
+          </Details>
+        </Dp>
+      </Produit>
+      <Produit Nom="Visishelf">
+        <Dp Nom="By Actishelf">
+          <Details>
+            <IdCmp>10510</IdCmp>
+            <Campagne>VS SLIM CELIA NUTRITION INFANTILE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10771</IdCmp>
+            <Campagne>VS PEPSI MAX</Campagne>
+            <DateDebut>01/04/2019</DateDebut>
+            <DateFin>29/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>         
+          <Details>
+            <IdCmp>10995</IdCmp>
+            <Campagne>VS SLIM YAOS YAOURT A LA GRECQUE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+        </Dp>
+        <Dp Nom="Kakémono By Actishelf ">
+          <Details>
+            <IdCmp>10516</IdCmp>
+            <Campagne>VS BLEDINA ALIMENTS BEBE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>04/03/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10448</IdCmp>
+            <Campagne>VS BAIN DE BOUCHE LISTERINE</Campagne>
+            <DateDebut>14/01/2019</DateDebut>
+            <DateFin>11/02/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10663</IdCmp>
+            <Campagne>VS NESCAFE SPECIAL FILTRE</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10685</IdCmp>
+            <Campagne>VS COCA COLA SANS SUCRE</Campagne>
+            <DateDebut>04/03/2019</DateDebut>
+            <DateFin>01/04/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10992</IdCmp>
+            <Campagne>VS LOTUS BABY COUCHES BEBE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>10827</IdCmp>
+            <Campagne>VS ORANGINA SCHWEPPES AGRUM</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>
+          <Details>
+            <IdCmp>11002</IdCmp>
+            <Campagne>VS KAKEMONO O'VERGER OASIS L'EAU FRUITEE</Campagne>
+            <DateDebut>27/05/2019</DateDebut>
+            <DateFin>24/06/2019</DateFin>
+            <MontantRdvcHT>11.43</MontantRdvcHT>
+            <Enseigne>CARREFOUR</Enseigne>
+            <Commune>ASNIRES-SUR-SEINE</Commune>
+            <IdPv>10564</IdPv>
+            <Produit>Visishelf</Produit>
+          </Details>        
+        </Dp>
+      </Produit>
+    </TypeProduit>
+  </Commune>
+</produits>

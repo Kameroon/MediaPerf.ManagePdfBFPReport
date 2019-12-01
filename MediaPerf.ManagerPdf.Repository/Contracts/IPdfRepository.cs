@@ -13,5 +13,7 @@ namespace MediaPerf.ManagerPdf.Repository.Contracts
 
         //Task<bool> ManagefpPPV();
         bool ManagefpPPV();
+
+        bool CreateRoyaltyFeePdfFile(XDocument xDocument);
     }
 }

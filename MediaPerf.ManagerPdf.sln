@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPerf.ManagerPdf.UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject1", "XUnitTestProject1\XUnitTestProject1.csproj", "{20C9FCB1-0946-4A91-80C8-CD65A51E0790}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{BE5CB1A3-BED4-4F03-BD31-10BAF6743321}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp_Ftp", "ConsoleApp_Ftp\ConsoleApp_Ftp.csproj", "{2D7A64DF-397E-4060-BEF5-9C8B440F194A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{20C9FCB1-0946-4A91-80C8-CD65A51E0790}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20C9FCB1-0946-4A91-80C8-CD65A51E0790}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20C9FCB1-0946-4A91-80C8-CD65A51E0790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5CB1A3-BED4-4F03-BD31-10BAF6743321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5CB1A3-BED4-4F03-BD31-10BAF6743321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5CB1A3-BED4-4F03-BD31-10BAF6743321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5CB1A3-BED4-4F03-BD31-10BAF6743321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D7A64DF-397E-4060-BEF5-9C8B440F194A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D7A64DF-397E-4060-BEF5-9C8B440F194A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D7A64DF-397E-4060-BEF5-9C8B440F194A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D7A64DF-397E-4060-BEF5-9C8B440F194A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

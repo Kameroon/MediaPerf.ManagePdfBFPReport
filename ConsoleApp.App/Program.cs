@@ -1,4 +1,5 @@
-﻿using MediaPerf.ManagerPdf.Infrastrure.Contracts;
+﻿using FluentFTP;
+using MediaPerf.ManagerPdf.Infrastrure.Contracts;
 using MediaPerf.ManagerPdf.Infrastrure.Implementations;
 using MediaPerf.ManagerPdf.MailService.Contracts;
 using MediaPerf.ManagerPdf.MailService.Implementations;
@@ -15,7 +16,9 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Unity;
@@ -36,6 +39,11 @@ namespace ConsoleApp.App
 
         static void Main(string[] args)
         {
+            string pdfPath = @"C:\FTP\UserLoginTest\Rapport.txt";
+            Upload(pdfPath);
+
+            ;
+
             _logger.Debug($"****** Démarrage de l'application. [Nom de la machine :] {Environment.MachineName} ********");
             // -- Call initialize --
             Initialize();
@@ -102,6 +110,107 @@ namespace ConsoleApp.App
             _consolidateHelper = container.Resolve<ConsolidateHelper>();
 
             _logger.Debug($"==> Fin configuration des differents containers.");
+        }
+        #endregion
+
+
+        #region --   --
+
+        /// <summary>  "ftp://127.0.0.1/Rapport.txt"
+        /// --  --  Port FileZila Server  Host : localhost; Port: ; Password : "testUser"  uName: "testUser"
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void Upload(string filePath)
+        {
+            string fTPAddress = "ftp://127.0.0.1";
+            string username = "testUser";
+            string password = "testUser";
+
+            try
+            {
+                #region -- OK --
+                FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create(fTPAddress + "/" +
+                       Path.GetFileName(filePath));
+
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential(username, password);
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = false;
+
+                FileStream stream = File.OpenRead(filePath);
+                byte[] buffer = new byte[stream.Length];
+
+                stream.Read(buffer, 0, buffer.Length);
+                stream.Close();
+                #endregion
+
+                #region -- FluentClient--
+
+                // connect to the FTP server
+                using (FtpClient client = new FtpClient())
+                {
+                    client.Host = fTPAddress;
+                    
+                    client.Credentials = new NetworkCredential(username, password);
+                    client.Connect();
+
+                    // upload a file
+                    client.UploadFile(@"C:\Users\Sweet Family\Desktop\PdfFilesPath\Output.pdf", "/htdocs/big.txt");
+
+                    //// rename the uploaded file
+                    //client.Rename("/htdocs/big.txt", "/htdocs/big2.txt");
+
+                    //// download the file again
+                    //client.DownloadFile(@"C:\MyVideo_2.mp4", "/htdocs/big2.txt");
+
+                    System.Web.UI.WebControls.FileUpload fileUpload = new System.Web.UI.WebControls.FileUpload();
+                    if (fileUpload.HasFile)
+                    {
+                        string contentType = fileUpload.PostedFile.ContentType;
+                        if (contentType == "image/jpeg")
+                        {
+                            int fileSize = fileUpload.PostedFile.ContentLength;
+
+                            if (fileSize <= 5200)
+                            {
+
+                            }
+                        }
+                    }
+                }
+                #endregion
+            }
+            catch (Exception exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static void Upload2(/*FileInf*/string  file)
+        {
+            string fTPAddress = "ftp://127.0.0.1";
+            string username = "testUser";
+            string password = "testUser";
+
+            var client = new FtpClient
+            {
+                Host = fTPAddress,
+                Port = 21,
+                Credentials = new NetworkCredential(username, password)
+            };
+            //client.ValidateCertificate += OnValidateCertificate;
+            //client.DataConnectionType = FtpDataConnectionType.PASV;
+            //client.EncryptionMode = _encryptionMode;
+
+            //client.Connect();
+            //client.SetWorkingDirectory(Path);
+
+            //PluginFtp.UploadFile(client, file);
+            //Task.InfoFormat("[PluginFTPS] file {0} sent to {1}.", file.Path, Server);
+
+            client.Disconnect();
         }
         #endregion
     }

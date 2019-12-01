@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MediaPerf.ManagerPdf.Service.Manager.Implementations
 {
@@ -51,7 +52,14 @@ namespace MediaPerf.ManagerPdf.Service.Manager.Implementations
         //public Task<bool> ReadTextFileAsync()
         public bool ReadTextFileAsync()
         {
+            CreateRoyaltyFeePdfFile(null);
+
             return _pdfRepository.ManagefpPPV();            
+        }
+
+        public bool CreateRoyaltyFeePdfFile(XDocument xDocument)
+        {
+            return _pdfRepository.CreateRoyaltyFeePdfFile(xDocument);
         }
         #endregion
     }

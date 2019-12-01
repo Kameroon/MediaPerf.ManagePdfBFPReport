@@ -4,18 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1FF0693A-415B-4DBA-B982-E8AE746B6498}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MediaPerf.ManagerPdf.Model</RootNamespace>
-    <AssemblyName>MediaPerf.ManagerPdf.Model</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <ProjectGuid>{2D7A64DF-397E-4060-BEF5-9C8B440F194A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleApp_Ftp</RootNamespace>
+    <AssemblyName>ConsoleApp_Ftp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,29 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IAdress.cs" />
-    <Compile Include="Contracts\IBaseEntity.cs" />
-    <Compile Include="Contracts\IBfpReportHistoric.cs" />
-    <Compile Include="Contracts\IContactRedevance.cs" />
-    <Compile Include="Contracts\IFooterPage.cs" />
-    <Compile Include="Contracts\IHeaderPage.cs" />
-    <Compile Include="Contracts\IMailTemplate.cs" />
-    <Compile Include="Contracts\IRoyaltyFee.cs" />
-    <Compile Include="Implementations\Adress.cs" />
-    <Compile Include="Implementations\BaseEntity.cs" />
-    <Compile Include="Implementations\BfpReportHistoric.cs" />
-    <Compile Include="Implementations\ContactRedevance.cs" />
-    <Compile Include="Implementations\FooterPage.cs" />
-    <Compile Include="Implementations\HeaderPage.cs" />
-    <Compile Include="Implementations\MailTemplate.cs" />
-    <Compile Include="Implementations\RoyaltyFee.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MediaPerf.ManagerPdf.Infrastrure\MediaPerf.ManagerPdf.Infrastrure.csproj">
-      <Project>{093db8af-a7f6-47b4-ad60-b2c686ac6c57}</Project>
-      <Name>MediaPerf.ManagerPdf.Infrastrure</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

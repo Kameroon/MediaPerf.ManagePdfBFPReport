@@ -75,6 +75,7 @@
     <Compile Include="RepositoryBase\DapperRepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Product.xml" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

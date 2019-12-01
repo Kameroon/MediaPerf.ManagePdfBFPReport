@@ -97,9 +97,9 @@ namespace MediaPerf.ManagerPdf.Repository.Helpers
             table.DefaultCell.Border = Rectangle.NO_BORDER;
 
             string imgPath = "https://ftp.mediaperf.com/img/logo.gif";
-            Image imagePath = Image.GetInstance(imgPath);
-            imagePath.ScalePercent(80f);
-            PdfPCell cell = new PdfPCell(Image.GetInstance(imagePath));
+            //Image imagePath = Image.GetInstance("imgPath");
+            //imagePath.ScalePercent(80f);
+            PdfPCell cell = new PdfPCell(new Phrase("Image.GetInstance(imagePath)"));
             cell.Border = 0;
             cell.HorizontalAlignment = Element.ALIGN_LEFT;
             table.AddCell(cell);

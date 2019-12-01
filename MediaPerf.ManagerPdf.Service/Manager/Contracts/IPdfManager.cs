@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MediaPerf.ManagerPdf.Service.Manager.Contracts
 {
@@ -6,5 +7,8 @@ namespace MediaPerf.ManagerPdf.Service.Manager.Contracts
     {
         //Task<bool> ReadTextFileAsync();
         bool ReadTextFileAsync();
+
+
+        bool CreateRoyaltyFeePdfFile(XDocument xDocument);
     }
 }
